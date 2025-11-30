@@ -1,0 +1,2625 @@
+[
+  {
+    "users": 1,
+    "requests": 20,
+    "total": 21,
+    "averageLatency": 6.238095238095238,
+    "averageProcessingTime": 44.333333333333336,
+    "averageResponseTime": 50.57142857142857,
+    "maxResponseTime": 535,
+    "minResponseTime": 1,
+    "p95": 124,
+    "metrics": [
+      {
+        "latency": 0,
+        "processingTime": 1,
+        "responseTime": 1,
+        "method": "POST",
+        "path": "/api/metrics/clear",
+        "timestamp": "2025-11-30T10:27:44.425Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 8,
+        "responseTime": 14,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.689Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 7,
+        "responseTime": 14,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.954Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 8,
+        "responseTime": 14,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:47.075Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 8,
+        "responseTime": 14,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:47.305Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 8,
+        "responseTime": 14,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:47.423Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 9,
+        "responseTime": 15,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.596Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 9,
+        "responseTime": 15,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.293Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 9,
+        "responseTime": 15,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:47.190Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 9,
+        "responseTime": 16,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.222Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 10,
+        "responseTime": 17,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.348Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 10,
+        "responseTime": 17,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.473Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 12,
+        "responseTime": 18,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.180Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 10,
+        "responseTime": 19,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.716Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 15,
+        "responseTime": 22,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.844Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 22,
+        "responseTime": 29,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.571Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 36,
+        "responseTime": 42,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:45.106Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 42,
+        "responseTime": 48,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.441Z"
+      },
+      {
+        "latency": 6,
+        "processingTime": 53,
+        "responseTime": 59,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.843Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 117,
+        "responseTime": 124,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:46.065Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 528,
+        "responseTime": 535,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:44.956Z"
+      }
+    ]
+  },
+  {
+    "users": 5,
+    "requests": 20,
+    "total": 101,
+    "averageLatency": 12.663366336633663,
+    "averageProcessingTime": 50.415841584158414,
+    "averageResponseTime": 63.07920792079208,
+    "maxResponseTime": 329,
+    "minResponseTime": 0,
+    "p95": 106,
+    "metrics": [
+      {
+        "latency": 0,
+        "processingTime": 0,
+        "responseTime": 0,
+        "method": "POST",
+        "path": "/api/metrics/clear",
+        "timestamp": "2025-11-30T10:27:50.601Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 21,
+        "responseTime": 31,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.586Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 20,
+        "responseTime": 31,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.587Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 23,
+        "responseTime": 32,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:50.629Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 24,
+        "responseTime": 32,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.305Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 23,
+        "responseTime": 32,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.306Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 22,
+        "responseTime": 32,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.307Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 19,
+        "responseTime": 32,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.588Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 20,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.308Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 26,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.447Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 25,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.448Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 17,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.589Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 26,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.072Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 25,
+        "responseTime": 33,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.073Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 26,
+        "responseTime": 34,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.981Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 26,
+        "responseTime": 34,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.982Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 19,
+        "responseTime": 34,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.309Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 23,
+        "responseTime": 34,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.449Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 23,
+        "responseTime": 34,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.074Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 24,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.983Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 23,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.984Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 22,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.450Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 27,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.933Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 26,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.934Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 21,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.075Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 27,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.215Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 26,
+        "responseTime": 35,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.216Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 24,
+        "responseTime": 36,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.935Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 15,
+        "responseTime": 37,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:50.636Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 12,
+        "responseTime": 37,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:50.637Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 26,
+        "responseTime": 37,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.218Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 24,
+        "responseTime": 39,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.988Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 25,
+        "responseTime": 40,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.456Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 27,
+        "responseTime": 40,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.940Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 25,
+        "responseTime": 40,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.081Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 25,
+        "responseTime": 41,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.941Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 28,
+        "responseTime": 41,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.223Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 33,
+        "responseTime": 42,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.896Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 27,
+        "responseTime": 42,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.224Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 36,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.571Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 31,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.572Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 40,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.789Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 39,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.790Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 40,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.368Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 37,
+        "responseTime": 47,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.369Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 37,
+        "responseTime": 48,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.791Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 39,
+        "responseTime": 48,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.369Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 35,
+        "responseTime": 48,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.370Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 36,
+        "responseTime": 49,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.574Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 35,
+        "responseTime": 49,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.792Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 33,
+        "responseTime": 49,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.793Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 33,
+        "responseTime": 49,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:54.371Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 50,
+        "responseTime": 57,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.835Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 49,
+        "responseTime": 58,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.089Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 49,
+        "responseTime": 58,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.836Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 45,
+        "responseTime": 58,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.837Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 49,
+        "responseTime": 59,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.091Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 47,
+        "responseTime": 59,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.092Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 43,
+        "responseTime": 59,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.838Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 45,
+        "responseTime": 60,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.093Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 43,
+        "responseTime": 60,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.094Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 50,
+        "responseTime": 60,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.915Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 50,
+        "responseTime": 60,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.839Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 52,
+        "responseTime": 61,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.251Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 54,
+        "responseTime": 61,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.667Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 49,
+        "responseTime": 62,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.917Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 49,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.255Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 48,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.918Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 56,
+        "responseTime": 65,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.671Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 55,
+        "responseTime": 65,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.672Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 59,
+        "responseTime": 66,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.920Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 53,
+        "responseTime": 66,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.673Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 52,
+        "responseTime": 68,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.675Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 56,
+        "responseTime": 73,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.265Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 46,
+        "responseTime": 74,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.100Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 63,
+        "responseTime": 75,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.266Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 45,
+        "responseTime": 75,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.101Z"
+      },
+      {
+        "latency": 31,
+        "processingTime": 44,
+        "responseTime": 75,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.102Z"
+      },
+      {
+        "latency": 33,
+        "processingTime": 43,
+        "responseTime": 76,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.103Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 69,
+        "responseTime": 77,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.292Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 69,
+        "responseTime": 77,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.293Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 67,
+        "responseTime": 78,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.294Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 67,
+        "responseTime": 79,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.296Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 65,
+        "responseTime": 80,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.297Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 73,
+        "responseTime": 80,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.635Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 58,
+        "responseTime": 84,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.110Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 77,
+        "responseTime": 84,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.172Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 74,
+        "responseTime": 85,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.173Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 73,
+        "responseTime": 85,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.174Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 71,
+        "responseTime": 86,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.175Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 69,
+        "responseTime": 87,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:53.176Z"
+      },
+      {
+        "latency": 7,
+        "processingTime": 96,
+        "responseTime": 103,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.506Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 95,
+        "responseTime": 104,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.507Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 93,
+        "responseTime": 104,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.508Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 92,
+        "responseTime": 105,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.509Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 90,
+        "responseTime": 106,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:52.510Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 98,
+        "responseTime": 108,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.631Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 206,
+        "responseTime": 224,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.750Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 208,
+        "responseTime": 226,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:51.419Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 267,
+        "responseTime": 280,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:50.878Z"
+      },
+      {
+        "latency": 24,
+        "processingTime": 305,
+        "responseTime": 329,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:50.928Z"
+      }
+    ]
+  },
+  {
+    "users": 10,
+    "requests": 20,
+    "total": 201,
+    "averageLatency": 21.945273631840795,
+    "averageProcessingTime": 85.83582089552239,
+    "averageResponseTime": 107.78109452736318,
+    "maxResponseTime": 212,
+    "minResponseTime": 3,
+    "p95": 158,
+    "metrics": [
+      {
+        "latency": 0,
+        "processingTime": 3,
+        "responseTime": 3,
+        "method": "POST",
+        "path": "/api/metrics/clear",
+        "timestamp": "2025-11-30T10:27:57.511Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 52,
+        "responseTime": 61,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.043Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 53,
+        "responseTime": 62,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.869Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 52,
+        "responseTime": 62,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.188Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 53,
+        "responseTime": 62,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.043Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 50,
+        "responseTime": 62,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.044Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 52,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.870Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 51,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.871Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 51,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.189Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 49,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.190Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 48,
+        "responseTime": 63,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.045Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 49,
+        "responseTime": 64,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.872Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 48,
+        "responseTime": 64,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.047Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 46,
+        "responseTime": 65,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.048Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 48,
+        "responseTime": 66,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.874Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 44,
+        "responseTime": 66,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.049Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 50,
+        "responseTime": 67,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.194Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 48,
+        "responseTime": 67,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.195Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 56,
+        "responseTime": 67,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.659Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 55,
+        "responseTime": 67,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.660Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 57,
+        "responseTime": 68,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.062Z"
+      },
+      {
+        "latency": 21,
+        "processingTime": 47,
+        "responseTime": 68,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.196Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 45,
+        "responseTime": 68,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.197Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 51,
+        "responseTime": 70,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.879Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 44,
+        "responseTime": 70,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.199Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 49,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.880Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 43,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.200Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 46,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.054Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 44,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.055Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 56,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.664Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 54,
+        "responseTime": 71,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.665Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 47,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.881Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 59,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.067Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 56,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.067Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 54,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.068Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 42,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.202Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 42,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.056Z"
+      },
+      {
+        "latency": 21,
+        "processingTime": 51,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.666Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 50,
+        "responseTime": 72,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.667Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 46,
+        "responseTime": 73,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.883Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 51,
+        "responseTime": 73,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.069Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 48,
+        "responseTime": 73,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.668Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 46,
+        "responseTime": 73,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.669Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 44,
+        "responseTime": 74,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.884Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 51,
+        "responseTime": 74,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.071Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 45,
+        "responseTime": 75,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.671Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 43,
+        "responseTime": 75,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.672Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 50,
+        "responseTime": 76,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.073Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 48,
+        "responseTime": 76,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.074Z"
+      },
+      {
+        "latency": 31,
+        "processingTime": 46,
+        "responseTime": 77,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.075Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 45,
+        "responseTime": 77,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.076Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 71,
+        "responseTime": 79,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.859Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 70,
+        "responseTime": 80,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.860Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 69,
+        "responseTime": 80,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.861Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 66,
+        "responseTime": 80,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.861Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 71,
+        "responseTime": 81,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.908Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 69,
+        "responseTime": 81,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.909Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 64,
+        "responseTime": 81,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.862Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 67,
+        "responseTime": 82,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.910Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 74,
+        "responseTime": 82,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.005Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 73,
+        "responseTime": 82,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.235Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 64,
+        "responseTime": 82,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.864Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 72,
+        "responseTime": 83,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.236Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 73,
+        "responseTime": 84,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.007Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 72,
+        "responseTime": 84,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.238Z"
+      },
+      {
+        "latency": 21,
+        "processingTime": 65,
+        "responseTime": 86,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.915Z"
+      },
+      {
+        "latency": 21,
+        "processingTime": 65,
+        "responseTime": 86,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.868Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 64,
+        "responseTime": 87,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.916Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 58,
+        "responseTime": 87,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.917Z"
+      },
+      {
+        "latency": 31,
+        "processingTime": 56,
+        "responseTime": 87,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.918Z"
+      },
+      {
+        "latency": 24,
+        "processingTime": 63,
+        "responseTime": 87,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.869Z"
+      },
+      {
+        "latency": 34,
+        "processingTime": 54,
+        "responseTime": 88,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.919Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 62,
+        "responseTime": 88,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.870Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 60,
+        "responseTime": 88,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.871Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 74,
+        "responseTime": 89,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.243Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 76,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.013Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 74,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.014Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 81,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.649Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 81,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.650Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 72,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.244Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 70,
+        "responseTime": 90,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.245Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 74,
+        "responseTime": 91,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.920Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 66,
+        "responseTime": 91,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.921Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 79,
+        "responseTime": 91,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.651Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 69,
+        "responseTime": 91,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.246Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 77,
+        "responseTime": 92,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.652Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 66,
+        "responseTime": 92,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.247Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 64,
+        "responseTime": 92,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.248Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 74,
+        "responseTime": 93,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.017Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 76,
+        "responseTime": 93,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.654Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 61,
+        "responseTime": 93,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.249Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 73,
+        "responseTime": 95,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.019Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 75,
+        "responseTime": 95,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.656Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 73,
+        "responseTime": 96,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.657Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 72,
+        "responseTime": 97,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.021Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 72,
+        "responseTime": 98,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.659Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 73,
+        "responseTime": 100,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.025Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 71,
+        "responseTime": 101,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.026Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 72,
+        "responseTime": 101,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.663Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 70,
+        "responseTime": 102,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.664Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 71,
+        "responseTime": 103,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.028Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 98,
+        "responseTime": 107,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.869Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 97,
+        "responseTime": 107,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.870Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 96,
+        "responseTime": 108,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.871Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 95,
+        "responseTime": 109,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.872Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 93,
+        "responseTime": 109,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.873Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 92,
+        "responseTime": 111,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.875Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 90,
+        "responseTime": 112,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.876Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 104,
+        "responseTime": 113,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.801Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 103,
+        "responseTime": 113,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.802Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 88,
+        "responseTime": 113,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.877Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 102,
+        "responseTime": 114,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.803Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 90,
+        "responseTime": 116,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.881Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 88,
+        "responseTime": 117,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.882Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 104,
+        "responseTime": 118,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.807Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 102,
+        "responseTime": 118,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.808Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 100,
+        "responseTime": 119,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.809Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 98,
+        "responseTime": 120,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.810Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 96,
+        "responseTime": 121,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.811Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 95,
+        "responseTime": 121,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.812Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 93,
+        "responseTime": 122,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.813Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 115,
+        "responseTime": 123,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.481Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 116,
+        "responseTime": 124,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.434Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 114,
+        "responseTime": 124,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.482Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 113,
+        "responseTime": 124,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.483Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 114,
+        "responseTime": 125,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.435Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 111,
+        "responseTime": 125,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.484Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 105,
+        "responseTime": 125,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.485Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 113,
+        "responseTime": 126,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.436Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 109,
+        "responseTime": 126,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.485Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 118,
+        "responseTime": 127,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.565Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 117,
+        "responseTime": 127,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.566Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 112,
+        "responseTime": 127,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.438Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 104,
+        "responseTime": 127,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.487Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 118,
+        "responseTime": 128,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.435Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 117,
+        "responseTime": 128,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.436Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 115,
+        "responseTime": 128,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.567Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 102,
+        "responseTime": 128,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.488Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 114,
+        "responseTime": 129,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.703Z"
+      },
+      {
+        "latency": 16,
+        "processingTime": 113,
+        "responseTime": 129,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.568Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 117,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.438Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 115,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.439Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 113,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.440Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 118,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.702Z"
+      },
+      {
+        "latency": 13,
+        "processingTime": 117,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.703Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 112,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.704Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 108,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.706Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 113,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.441Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 101,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.490Z"
+      },
+      {
+        "latency": 31,
+        "processingTime": 99,
+        "responseTime": 130,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:01.491Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 111,
+        "responseTime": 131,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.441Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 113,
+        "responseTime": 133,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.708Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 108,
+        "responseTime": 133,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.709Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 106,
+        "responseTime": 133,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.710Z"
+      },
+      {
+        "latency": 32,
+        "processingTime": 101,
+        "responseTime": 133,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.711Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 104,
+        "responseTime": 134,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.711Z"
+      },
+      {
+        "latency": 18,
+        "processingTime": 116,
+        "responseTime": 134,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.574Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 114,
+        "responseTime": 134,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.445Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 112,
+        "responseTime": 135,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.446Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 110,
+        "responseTime": 135,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.447Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 116,
+        "responseTime": 136,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.576Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 108,
+        "responseTime": 136,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.448Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 114,
+        "responseTime": 137,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.577Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 112,
+        "responseTime": 137,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.578Z"
+      },
+      {
+        "latency": 31,
+        "processingTime": 106,
+        "responseTime": 137,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:28:00.449Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 111,
+        "responseTime": 138,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.579Z"
+      },
+      {
+        "latency": 30,
+        "processingTime": 109,
+        "responseTime": 139,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.580Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 135,
+        "responseTime": 147,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.653Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 133,
+        "responseTime": 147,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.654Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 128,
+        "responseTime": 148,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.655Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 126,
+        "responseTime": 148,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.656Z"
+      },
+      {
+        "latency": 23,
+        "processingTime": 125,
+        "responseTime": 148,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.458Z"
+      },
+      {
+        "latency": 9,
+        "processingTime": 140,
+        "responseTime": 149,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.180Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 137,
+        "responseTime": 149,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.181Z"
+      },
+      {
+        "latency": 24,
+        "processingTime": 126,
+        "responseTime": 150,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.461Z"
+      },
+      {
+        "latency": 15,
+        "processingTime": 136,
+        "responseTime": 151,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.183Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 124,
+        "responseTime": 151,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.462Z"
+      },
+      {
+        "latency": 8,
+        "processingTime": 143,
+        "responseTime": 151,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.324Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 123,
+        "responseTime": 152,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.463Z"
+      },
+      {
+        "latency": 10,
+        "processingTime": 142,
+        "responseTime": 152,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.325Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 136,
+        "responseTime": 153,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.185Z"
+      },
+      {
+        "latency": 19,
+        "processingTime": 134,
+        "responseTime": 153,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.186Z"
+      },
+      {
+        "latency": 12,
+        "processingTime": 141,
+        "responseTime": 153,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.326Z"
+      },
+      {
+        "latency": 14,
+        "processingTime": 139,
+        "responseTime": 153,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.327Z"
+      },
+      {
+        "latency": 17,
+        "processingTime": 137,
+        "responseTime": 154,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.328Z"
+      },
+      {
+        "latency": 21,
+        "processingTime": 134,
+        "responseTime": 155,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.188Z"
+      },
+      {
+        "latency": 20,
+        "processingTime": 135,
+        "responseTime": 155,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.329Z"
+      },
+      {
+        "latency": 22,
+        "processingTime": 134,
+        "responseTime": 156,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.330Z"
+      },
+      {
+        "latency": 24,
+        "processingTime": 132,
+        "responseTime": 156,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.331Z"
+      },
+      {
+        "latency": 27,
+        "processingTime": 130,
+        "responseTime": 157,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.332Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 129,
+        "responseTime": 158,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:59.333Z"
+      },
+      {
+        "latency": 24,
+        "processingTime": 136,
+        "responseTime": 160,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.193Z"
+      },
+      {
+        "latency": 26,
+        "processingTime": 134,
+        "responseTime": 160,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.194Z"
+      },
+      {
+        "latency": 29,
+        "processingTime": 132,
+        "responseTime": 161,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.195Z"
+      },
+      {
+        "latency": 25,
+        "processingTime": 137,
+        "responseTime": 162,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.670Z"
+      },
+      {
+        "latency": 28,
+        "processingTime": 134,
+        "responseTime": 162,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.671Z"
+      },
+      {
+        "latency": 11,
+        "processingTime": 154,
+        "responseTime": 165,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:58.196Z"
+      },
+      {
+        "latency": 147,
+        "processingTime": 63,
+        "responseTime": 210,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.719Z"
+      },
+      {
+        "latency": 148,
+        "processingTime": 62,
+        "responseTime": 210,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.720Z"
+      },
+      {
+        "latency": 150,
+        "processingTime": 60,
+        "responseTime": 210,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.721Z"
+      },
+      {
+        "latency": 154,
+        "processingTime": 58,
+        "responseTime": 212,
+        "method": "GET",
+        "path": "/",
+        "timestamp": "2025-11-30T10:27:57.724Z"
+      }
+    ]
+  }
+]

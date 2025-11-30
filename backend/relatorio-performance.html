@@ -1,0 +1,30 @@
+<html><head><script src="https://cdn.jsdelivr.net/npm/chart.js"></script></head><body>
+  <h1>Relatorio AV3</h1>
+  <table border="1" style="width:100%; text-align:center;">
+    <tr><th>Usuarios</th><th>Latencia</th><th>Proc</th><th>Total</th><th>P95</th></tr>
+    <tr><td>1</td><td>9.33</td><td>17.05</td><td>26.38</td><td>60.00</td></tr><tr><td>5</td><td>16.72</td><td>32.29</td><td>49.01</td><td>89.00</td></tr><tr><td>10</td><td>24.79</td><td>52.55</td><td>77.34</td><td>124.00</td></tr>
+  </table>
+  <br>
+  <div style="width: 500px; float:left;"><canvas id="c1"></canvas></div>
+  <div style="width: 500px; float:left;"><canvas id="c2"></canvas></div>
+  <script>
+    const d = [{"u":1,"reqs":20,"lat":9.333333333333334,"proc":17.047619047619047,"tot":26.38095238095238,"p95":60},{"u":5,"reqs":20,"lat":16.722772277227723,"proc":32.28712871287129,"tot":49.00990099009901,"p95":89},{"u":10,"reqs":20,"lat":24.786069651741293,"proc":52.55223880597015,"tot":77.33830845771145,"p95":124}];
+    new Chart(document.getElementById('c1'), {
+      type: 'bar',
+      data: {
+        labels: d.map(x => x.u + ' users'),
+        datasets: [{ label: 'Tempo Total', data: d.map(x => x.tot), backgroundColor: 'blue' }]
+      }
+    });
+    new Chart(document.getElementById('c2'), {
+      type: 'line',
+      data: {
+        labels: d.map(x => x.u + ' users'),
+        datasets: [
+          { label: 'Latencia', data: d.map(x => x.lat), borderColor: 'red' },
+          { label: 'Processamento', data: d.map(x => x.proc), borderColor: 'green' }
+        ]
+      }
+    });
+  </script>
+  </body></html>

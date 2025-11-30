@@ -1,0 +1,179 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+.funcionario-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(15, 23, 42, 0.9), rgba(2, 6, 23, 0.95));
+  backdrop-filter: blur(4px);
+  z-index: 100;
+}
+
+
+.funcionario-modal-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 420px;
+  max-width: 100%;
+  height: 100vh;
+  background: radial-gradient(circle at top left, #020617, #020617);
+  box-shadow: -18px 0 50px rgba(15, 23, 42, 0.9);
+  padding: 24px 22px;
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  animation: funcionario-slideIn 0.28s ease-out;
+  overflow-y: auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  border-left: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+@keyframes funcionario-slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+
+.funcionario-modal-header h2 {
+  text-align: left;
+  margin: 0 0 4px;
+  font-size: 1.3rem;
+  color: #f97316;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.funcionario-modal-header p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+
+.funcionario-modal-error-message {
+  background: rgba(248, 113, 113, 0.09);
+  color: #fecaca;
+  padding: 0.75rem 0.9rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid rgba(239, 68, 68, 0.7);
+  font-size: 0.9rem;
+}
+
+
+.funcionario-modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.funcionario-modal-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.funcionario-modal-form-group label {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: #e5e7eb;
+}
+
+.funcionario-modal-form-group input,
+.funcionario-modal-form-group select {
+  width: 100%;
+  padding: 10px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(55, 65, 81, 0.9);
+  background-color: rgba(15, 23, 42, 0.85);
+  color: #e5e7eb;
+  outline: none;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease,
+    background-color 0.2s ease, transform 0.05s ease;
+  font-family: inherit;
+}
+
+.funcionario-modal-form-group input::placeholder {
+  color: #6b7280;
+}
+
+.funcionario-modal-form-group input:focus,
+.funcionario-modal-form-group select:focus {
+  border-color: #f97316;
+  box-shadow: 0 0 0 1px rgba(249, 115, 22, 0.85),
+    0 0 0 10px rgba(249, 115, 22, 0.12);
+  background-color: rgba(15, 23, 42, 1);
+  transform: translateY(-0.5px);
+}
+
+.funcionario-modal-form-group select {
+  cursor: pointer;
+}
+
+
+.funcionario-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+  gap: 12px;
+}
+
+
+.funcionario-btn-modal-cancel,
+.funcionario-btn-modal-save {
+  border: none;
+  padding: 9px 18px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: background-color 0.2s ease, transform 0.1s ease,
+    box-shadow 0.2s ease, filter 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+}
+
+.funcionario-btn-modal-cancel {
+  background-color: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+.funcionario-btn-modal-cancel:hover {
+  background-color: rgba(31, 41, 55, 1);
+  transform: translateY(-1px);
+}
+
+.funcionario-btn-modal-save {
+  background: radial-gradient(circle at top left, #f97316, #b45309);
+  color: white;
+  border: 1px solid rgba(249, 115, 22, 0.85);
+  box-shadow: 0 10px 26px rgba(248, 113, 22, 0.65);
+}
+
+.funcionario-btn-modal-save:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 36px rgba(248, 113, 22, 0.9);
+  filter: brightness(1.05);
+}
+
+
+@media (max-width: 640px) {
+  .funcionario-modal-drawer {
+    width: 100%;
+    padding: 20px 16px;
+  }
+}

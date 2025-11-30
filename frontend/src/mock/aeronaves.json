@@ -1,0 +1,47 @@
+[
+  {
+    "codigo": "ACX-101",
+    "modelo": "Boeing 737 MAX",
+    "tipo": "comercial",
+    "capacidade": 189,
+    "km": 1250000,
+    "etapas": {
+      "atual": 3,
+      "total": 5,
+      "lista": [
+        { "id": 1, "nome": "Fuselagem", "status": "concluida", "funcionario": "Ana Silva" },
+        { "id": 2, "nome": "Asas", "status": "concluida", "funcionario": "Bruno Costa" },
+        { "id": 3, "nome": "Motores", "status": "em-andamento", "funcionario": "Carlos Dias" },
+        { "id": 4, "nome": "Aviônica", "status": "pendente", "funcionario": "-" },
+        { "id": 5, "nome": "Interior", "status": "pendente", "funcionario": "-" }
+      ]
+    },
+    "pecas": [
+      { "id": "p1", "nome": "Turbina GEnx", "qtd": 2 },
+      { "id": "p2", "nome": "Assento Recaro", "qtd": 189 }
+    ],
+    "testes": []
+  },
+  {
+    "codigo": "ACX-202",
+    "modelo": "Airbus A320neo",
+    "tipo": "comercial",
+    "capacidade": 180,
+    "km": 980000,
+    "etapas": {
+      "atual": 1,
+      "total": 4,
+      "lista": [
+        { "id": 1, "nome": "Fuselagem", "status": "em-andamento", "funcionario": "Ana Silva" },
+        { "id": 2, "nome": "Asas", "status": "pendente", "funcionario": "-" },
+        { "id": 3, "nome": "Motores", "status": "pendente", "funcionario": "-" },
+        { "id": 4, "nome": "Interior", "status": "pendente", "funcionario": "-" }
+      ]
+    },
+    "pecas": [
+      { "id": "p1", "nome": "Turbina PW1000G", "qtd": 2 },
+      { "id": "p2", "nome": "Assento Recaro", "qtd": 180 }
+    ],
+    "testes": []
+  }
+]
