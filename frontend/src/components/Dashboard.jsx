@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   Cell,
 } from 'recharts';
-import { relatorioService } from '../services/api';
+import axios from 'axios';
 import '../styles/dashboard.css';
 
 export default function Dashboard({ user }) {
@@ -39,11 +39,16 @@ export default function Dashboard({ user }) {
     try {
       setLoading(true);
       setError('');
-      const response = await relatorioService.dashboard();
+      
+      const token = localStorage.getItem('token');
+      const response = await axios.get('http://localhost:3000/api/relatorios/dashboard', {
+        headers: token ? { Authorization: `Bearer ${token}` } : {}
+      });
+      
       setStats(response.data);
     } catch (err) {
       console.error(err);
-      setError('Erro ao carregar dashboard. Verifique a conexão com o servidor.');
+      setError('Erro ao carregar dados. Verifique a conexão com o servidor.');
     } finally {
       setLoading(false);
     }
@@ -73,11 +78,11 @@ export default function Dashboard({ user }) {
   const getBarColor = (value) => {
     const minLightness = 80;
     const maxLightness = 50;
-    const HUE = 24;
-    const SATURATION = 100;
+    const HUE = 260;
+    const SATURATION = 85;
 
     if (maxEtapas === minEtapas) {
-      return `hsl(${HUE}, ${SATURATION}%, 50%)`;
+      return `hsl(${HUE}, ${SATURATION}%, 60%)`;
     }
 
     const percent = (value - minEtapas) / (maxEtapas - minEtapas || 1);
@@ -87,16 +92,16 @@ export default function Dashboard({ user }) {
 
   if (loading) {
     return (
-      <div className="dashboard-page">
-        <div className="dashboard-loading">Carregando dashboard...</div>
+      <div className="dashboard-wrapper">
+        <div className="spinner"></div>
       </div>
     );
   }
 
   if (error) {
     return (
-      <div className="dashboard-page">
-        <div className="dashboard-error">{error}</div>
+      <div className="dashboard-wrapper">
+        <div className="alert alert-error">{error}</div>
       </div>
     );
   }
@@ -104,152 +109,135 @@ export default function Dashboard({ user }) {
   if (!stats) return null;
 
   return (
-    <div className="dashboard-page">
-      <header className="dashboard-header">
-        <div>
-          <h1>Dashboard</h1>
-          <p className="dashboard-subtitle">
-            Visão geral das aeronaves, etapas e testes.
-          </p>
-        </div>
-        
-        <div className="user-pill">
-          <div className="user-avatar">
-            {usuarioLogado.nome ? usuarioLogado.nome.charAt(0).toUpperCase() : 'U'}
-          </div>
-          <div className="user-info-text">
-            <span className="user-name">
-              {usuarioLogado.nome || 'Colaborador'}
-            </span>
-            <span className="user-role">
-              {formatarCargo(usuarioLogado.nivelPermissao) || 'Usuário'}
-            </span>
-          </div>
+    <div className="dashboard-wrapper">
+      <h1 className="dashboard-title">Painel de Controle</h1>
+
+      <div className="metrics-grid">
+        <div className="metric-card">
+          <div className="metric-label">Total de Veículos</div>
+          <div className="metric-value">{totalAeronaves}</div>
+          <div className="metric-subtitle">Cadastrados no sistema</div>
         </div>
 
-      </header>
+        <div className="metric-card">
+          <div className="metric-label">Fases Finalizadas</div>
+          <div className="metric-value">{etapasConcluidas}</div>
+          <div className="metric-subtitle">Processos completos</div>
+        </div>
 
-      <main className="dashboard-main">
-        <section className="top-cards">
-          <div className="top-card primary">
-            <span className="top-card-label">Total de Aeronaves</span>
-            <span className="top-card-value">{totalAeronaves}</span>
+        <div className="metric-card">
+          <div className="metric-label">Validações Aprovadas</div>
+          <div className="metric-value">{stats.testesAprovados || 0}</div>
+          <div className="metric-subtitle">Testes com sucesso</div>
+        </div>
+
+        <div className="metric-card">
+          <div className="metric-label">Validações Reprovadas</div>
+          <div className="metric-value">{stats.testesReprovados || 0}</div>
+          <div className="metric-subtitle">Necessitam revisão</div>
+        </div>
+      </div>
+
+      <div className="info-section">
+        <div className="info-panel">
+          <div className="panel-header">
+            <h2 className="panel-title">Progresso dos Veículos</h2>
+            <span className="badge badge-info">{chartData.length} modelos</span>
           </div>
 
-          <div className="top-card">
-            <span className="top-card-label">Etapas Concluídas</span>
-            <span className="top-card-value">{etapasConcluidas}</span>
-          </div>
-
-          <div className="top-card">
-            <span className="top-card-label">Testes Aprovados</span>
-            <span className="top-card-value">{stats.testes?.aprovados || 0}</span>
-          </div>
-
-          <div className="top-card warning">
-            <span className="top-card-label">Testes Reprovados</span>
-            <span className="top-card-value">{stats.testes?.reprovados || 0}</span>
-          </div>
-        </section>
-
-        <section className="content-grid">
-          <div className="chart-section">
-            <div className="section-header">
-              <h2>Progresso das Aeronaves</h2>
-              <span className="section-badge">
-                {chartData.length} modelos
-              </span>
+          {chartData.length === 0 ? (
+            <div className="empty-state">
+              <div className="empty-state-icon">📊</div>
+              <p className="empty-state-text">Nenhum veículo com fases cadastradas</p>
             </div>
-
-            <div className="chart-wrapper">
-              {chartData.length === 0 ? (
-                <div className="empty-chart">
-                  Nenhuma aeronave com etapas cadastradas ainda.
-                </div>
-              ) : (
-                <ResponsiveContainer width="100%" height={380}>
-                  <BarChart
-                    data={chartData}
-                    margin={{ top: 10, right: 30, left: 0, bottom: 10 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                    <XAxis
-                      dataKey="name"
-                      stroke="#4a5568"
-                      tick={{ fontSize: 12 }}
+          ) : (
+            <ResponsiveContainer width="100%" height={320}>
+              <BarChart
+                data={chartData}
+                margin={{ top: 10, right: 20, left: 0, bottom: 10 }}
+              >
+                <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
+                <XAxis dataKey="name" stroke="#4a5568" tick={{ fontSize: 12 }} />
+                <YAxis stroke="#4a5568" tick={{ fontSize: 12 }} />
+                <Tooltip
+                  wrapperStyle={{
+                    backgroundColor: '#1a202c',
+                    border: 'none',
+                    borderRadius: '12px',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.3)',
+                  }}
+                  contentStyle={{
+                    backgroundColor: 'transparent',
+                    border: 'none',
+                  }}
+                  labelStyle={{
+                    color: '#e5e7eb',
+                    fontWeight: 'bold',
+                    marginBottom: 4,
+                  }}
+                  itemStyle={{
+                    color: '#e5e7eb',
+                    fontSize: 12,
+                  }}
+                  formatter={(value) => [`${value}`, 'Fases concluídas']}
+                />
+                <Bar dataKey="etapasAtuais" radius={[8, 8, 0, 0]}>
+                  {chartData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={getBarColor(entry.etapasAtuais)}
                     />
-                    <YAxis stroke="#4a5568" tick={{ fontSize: 12 }} />
-                    <Tooltip
-                      wrapperStyle={{
-                        backgroundColor: '#0f172a',
-                        border: '1px solid #1e293b',
-                        borderRadius: '8px',
-                        boxShadow: '0 10px 25px rgba(15,23,42,0.6)',
-                      }}
-                      contentStyle={{
-                        backgroundColor: 'transparent',
-                        border: 'none',
-                      }}
-                      labelStyle={{
-                        color: '#e5e7eb',
-                        fontWeight: 'bold',
-                        marginBottom: 4,
-                      }}
-                      itemStyle={{
-                        color: '#e5e7eb',
-                        fontSize: 12,
-                      }}
-                      formatter={(value) => [`${value}`, 'Etapas concluídas']}
-                    />
-                    <Bar dataKey="etapasAtuais" radius={[4, 4, 0, 0]}>
-                      {chartData.map((entry, index) => (
-                        <Cell
-                          key={`cell-${index}`}
-                          fill={getBarColor(entry.etapasAtuais)}
-                        />
-                      ))}
-                    </Bar>
-                  </BarChart>
-                </ResponsiveContainer>
-              )}
-            </div>
+                  ))}
+                </Bar>
+              </BarChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+
+        <div className="info-panel">
+          <div className="panel-header">
+            <h2 className="panel-title">Resumo de Fases</h2>
           </div>
 
-          <div className="side-panel">
-            <h2>Resumo de Etapas</h2>
-            <div className="side-metrics">
-              <div className="metric-row">
-                <span>Etapas Pendentes</span>
-                <span className="metric-value pending">
-                  {stats.etapas?.pendentes || 0}
-                </span>
+          <ul className="data-list">
+            <li className="list-item">
+              <div>
+                <div className="item-name">Aguardando</div>
+                <div className="item-description">Fases pendentes</div>
               </div>
-              <div className="metric-row">
-                <span>Etapas em Andamento</span>
-                <span className="metric-value progress">
-                  {stats.etapas?.andamento || 0}
-                </span>
+              <span className="status-badge status-pending">{stats.etapasPendentes || 0}</span>
+            </li>
+            <li className="list-item">
+              <div>
+                <div className="item-name">Processando</div>
+                <div className="item-description">Em andamento</div>
               </div>
-              <div className="metric-row">
-                <span>Etapas Concluídas</span>
-                <span className="metric-value done">
-                  {stats.etapas?.concluidas || 0}
-                </span>
+              <span className="status-badge status-active">{stats.etapasAndamento || 0}</span>
+            </li>
+            <li className="list-item">
+              <div>
+                <div className="item-name">Finalizadas</div>
+                <div className="item-description">Concluídas</div>
               </div>
-            </div>
+              <span className="status-badge status-active">{stats.etapasConcluidas || 0}</span>
+            </li>
+          </ul>
 
-            <h3 className="side-subtitle">Equipe</h3>
-            <div className="side-metrics">
-              <div className="metric-row">
-                <span>Total de Funcionários</span>
-                <span className="metric-value neutral">
-                  {stats.totalFuncionarios}
-                </span>
-              </div>
-            </div>
+          <div className="panel-header" style={{marginTop: '24px'}}>
+            <h2 className="panel-title">Equipe</h2>
           </div>
-        </section>
-      </main>
+
+          <ul className="data-list">
+            <li className="list-item">
+              <div>
+                <div className="item-name">Total de Colaboradores</div>
+                <div className="item-description">Cadastrados no sistema</div>
+              </div>
+              <span className="status-badge status-info">{stats.totalFuncionarios}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   );
 }

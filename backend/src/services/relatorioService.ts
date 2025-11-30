@@ -79,7 +79,7 @@ export class RelatorioService {
     const relatorio = await this.buscarPorId(relatorioId);
     const aeronave = relatorio.aeronave;
 
-    return new Promise((resolve, reject) => {
+    return new Promise<Buffer>((resolve, reject) => {
       try {
         const doc = new PDFDocument();
         const buffers: Buffer[] = [];
@@ -151,6 +151,20 @@ export class RelatorioService {
         reject(error);
       }
     });
+  }
+
+  // NOVO MÉTODO - Gera PDF direto da aeronave
+  async gerarPorAeronave(aeronaveId: number, tipo?: string): Promise<Buffer> {
+    // Cria um relatório temporário
+    const relatorio = await this.criar({
+      titulo: `Relatório ${tipo || 'completo'} - Aeronave ${aeronaveId}`,
+      descricao: `Relatório gerado automaticamente em ${new Date().toLocaleString('pt-BR')}`,
+      aeronaveId: aeronaveId,
+      usuarioId: 1
+    });
+
+    // Gera e retorna o PDF
+    return await this.gerarPDF(relatorio.id);
   }
 
   async deletar(id: number) {

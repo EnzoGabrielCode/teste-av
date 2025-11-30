@@ -1,19 +1,43 @@
 import React, { useState } from 'react';
 import { testeService } from '../../services/api';
-import '../../styles/modalcadaero.css';
+import '../../styles/modalregistrateste.css';
 
 function ModalRegistraTeste({ onClose, aeronaveId }) {
-  const [formData, setFormData] = useState({ tipo: 'ELETRICO', resultado: 'APROVADO' });
+  const [formData, setFormData] = useState({
+    tipo: '',
+    resultado: 'APROVADO',
+  });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError('');
+
+    if (!formData.tipo) {
+      setError('Por favor, selecione um tipo de validação');
+      return;
+    }
+
     try {
       setLoading(true);
-      await testeService.criar({ ...formData, aeronaveId });
+      const payload = {
+        tipo: formData.tipo,
+        resultado: formData.resultado,
+        aeronaveId: parseInt(aeronaveId),
+      };
+      
+      await testeService.criar(payload);
+      alert('Validação registrada com sucesso!');
       onClose();
     } catch (err) {
-      alert('Erro ao registrar teste');
+      console.error('Erro completo:', err);
+      setError(err.response?.data?.error || err.response?.data?.message || 'Erro ao registrar validação');
     } finally {
       setLoading(false);
     }
@@ -21,32 +45,85 @@ function ModalRegistraTeste({ onClose, aeronaveId }) {
 
   return (
     <>
-      <div className="modal-overlay" onClick={() => !loading && onClose()}></div>
-      <div className="modal-drawer">
-        <h2>Registrar Teste</h2>
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Tipo de Teste</label>
-            <select value={formData.tipo} onChange={e => setFormData({...formData, tipo: e.target.value})} disabled={loading}>
-              <option value="ELETRICO">Elétrico</option>
-              <option value="HIDRAULICO">Hidráulico</option>
-              <option value="AERODINAMICO">Aerodinâmico</option>
-            </select>
+      <div className="teste-modal-overlay" onClick={() => !loading && onClose()}></div>
+
+      <div className="teste-modal-container">
+        <div className="teste-modal-header">
+          <div className="teste-modal-title">
+            <div className="teste-icon">🔬</div>
+            Registrar Validação
           </div>
-          <div className="form-group">
-            <label>Resultado</label>
-            <select value={formData.resultado} onChange={e => setFormData({...formData, resultado: e.target.value})} disabled={loading}>
-              <option value="APROVADO">Aprovado</option>
-              <option value="REPROVADO">Reprovado</option>
-            </select>
-          </div>
-          <div className="modal-actions">
-            <button type="button" onClick={onClose} className="btn-cancel" disabled={loading}>Cancelar</button>
-            <button type="submit" className="btn-save" disabled={loading}>{loading ? 'Salvando...' : 'Registrar'}</button>
-          </div>
-        </form>
+          <p className="teste-modal-subtitle">
+            Registre os resultados da validação técnica
+          </p>
+          <button className="teste-close-button" onClick={() => !loading && onClose()}>
+            ×
+          </button>
+        </div>
+
+        <div className="teste-modal-body">
+          {error && <div className="input-error">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div className="teste-form-group">
+              <label className="teste-label">
+                Tipo de Validação <span className="required-mark">*</span>
+              </label>
+              <select
+                name="tipo"
+                className="teste-select"
+                value={formData.tipo}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              >
+                <option value="">Selecione um tipo</option>
+                <option value="ELETRICO">Teste Elétrico</option>
+                <option value="HIDRAULICO">Teste Hidráulico</option>
+                <option value="AERODINAMICO">Teste Aerodinâmico</option>
+              </select>
+            </div>
+
+            <div className="teste-form-group">
+              <label className="teste-label">
+                Resultado <span className="required-mark">*</span>
+              </label>
+              <select
+                name="resultado"
+                className="teste-select"
+                value={formData.resultado}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              >
+                <option value="APROVADO">Aprovado</option>
+                <option value="REPROVADO">Reprovado</option>
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div className="teste-modal-footer">
+          <button
+            type="button"
+            className="teste-button teste-btn-cancel"
+            onClick={onClose}
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            className="teste-button teste-btn-submit"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? 'Salvando...' : 'Registrar Validação'}
+          </button>
+        </div>
       </div>
     </>
   );
 }
+
 export default ModalRegistraTeste;

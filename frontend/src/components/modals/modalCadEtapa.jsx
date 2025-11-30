@@ -14,7 +14,7 @@ function ModalCadEtapa({ onClose, aeronaveId }) {
       await etapaService.criar({ ...formData, aeronaveId });
       onClose();
     } catch (err) {
-      setError('Erro ao cadastrar etapa');
+      setError('Erro ao cadastrar fase');
     } finally {
       setLoading(false);
     }
@@ -22,27 +22,69 @@ function ModalCadEtapa({ onClose, aeronaveId }) {
 
   return (
     <>
-      <div className="modal-overlay" onClick={() => !loading && onClose()}></div>
-      <div className="modal-drawer">
-        <h2>Nova Etapa</h2>
-        {error && <div className="error-message">{error}</div>}
-        
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Nome da Etapa</label>
-            <input type="text" value={formData.nome} onChange={e => setFormData({...formData, nome: e.target.value})} placeholder="Ex: Inspeção Elétrica" required disabled={loading} />
+      <div className="phase-modal-overlay" onClick={() => !loading && onClose()}></div>
+      <div className="phase-modal-container">
+        <div className="phase-modal-header">
+          <div className="phase-modal-title">
+            <div className="phase-icon">📋</div>
+            Nova Fase
           </div>
-          <div className="form-group">
-            <label>Prazo Estimado</label>
-            <input type="date" value={formData.prazo} onChange={e => setFormData({...formData, prazo: e.target.value})} required disabled={loading} />
-          </div>
-          <div className="modal-actions">
-            <button type="button" onClick={onClose} className="btn-cancel" disabled={loading}>Cancelar</button>
-            <button type="submit" className="btn-save" disabled={loading}>{loading ? 'Salvando...' : 'Salvar Etapa'}</button>
-          </div>
-        </form>
+          <p className="phase-modal-subtitle">Adicione uma nova fase ao cronograma</p>
+          <button className="phase-close-button" onClick={() => !loading && onClose()}>×</button>
+        </div>
+
+        <div className="phase-modal-body">
+          {error && <div className="input-error">{error}</div>}
+          
+          <form onSubmit={handleSubmit}>
+            <div className="phase-form-group">
+              <label className="phase-label">Título da Fase <span className="required-mark">*</span></label>
+              <input 
+                type="text" 
+                className="phase-input"
+                value={formData.nome} 
+                onChange={e => setFormData({...formData, nome: e.target.value})} 
+                placeholder="Ex: Inspeção Elétrica" 
+                required 
+                disabled={loading} 
+              />
+            </div>
+
+            <div className="phase-form-group">
+              <label className="phase-label">Data Limite <span className="required-mark">*</span></label>
+              <input 
+                type="date" 
+                className="phase-input"
+                value={formData.prazo} 
+                onChange={e => setFormData({...formData, prazo: e.target.value})} 
+                required 
+                disabled={loading} 
+              />
+            </div>
+          </form>
+        </div>
+
+        <div className="phase-modal-footer">
+          <button 
+            type="button" 
+            onClick={onClose} 
+            className="phase-button phase-btn-cancel" 
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button 
+            type="submit" 
+            onClick={handleSubmit}
+            className="phase-button phase-btn-submit" 
+            disabled={loading}
+          >
+            {loading ? 'Salvando...' : 'Salvar Fase'}
+          </button>
+        </div>
       </div>
     </>
   );
 }
+
 export default ModalCadEtapa;

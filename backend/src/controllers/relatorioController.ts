@@ -21,6 +21,7 @@ export class RelatorioController {
       res.status(500).json({ error: error.message });
     }
   }
+
   async dashboard(req: Request, res: Response) {
     try {
       const stats = await relatorioService.getDashboardStats();
@@ -29,6 +30,7 @@ export class RelatorioController {
       res.status(500).json({ error: error.message });
     }
   }
+
   async listarPorAeronave(req: Request, res: Response) {
     try {
       const aeronaveId = parseInt(req.params.aeronaveId);
@@ -58,6 +60,29 @@ export class RelatorioController {
       res.send(pdf);
     } catch (error: any) {
       res.status(400).json({ error: error.message });
+    }
+  }
+
+  async gerarPorAeronave(req: Request, res: Response) {
+    try {
+      const aeronaveId = parseInt(req.params.aeronaveId);
+      const { tipo } = req.query;
+
+      const relatorio = await relatorioService.criar({
+        titulo: `Relatório ${tipo || 'completo'} - Aeronave ${aeronaveId}`,
+        descricao: `Relatório gerado automaticamente em ${new Date().toLocaleString('pt-BR')}`,
+        aeronaveId: aeronaveId,
+        usuarioId: 1 
+      });
+
+      const pdfBuffer = await relatorioService.gerarPDF(relatorio.id);
+
+      res.setHeader('Content-Type', 'application/pdf');
+      res.setHeader('Content-Disposition', `attachment; filename="relatorio-aeronave-${aeronaveId}.pdf"`);
+      res.send(pdfBuffer);
+    } catch (error: any) {
+      console.error('Erro ao gerar relatório:', error);
+      res.status(500).json({ error: error.message });
     }
   }
 

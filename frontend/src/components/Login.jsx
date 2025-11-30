@@ -36,18 +36,20 @@ export default function Login({ onLogin }) {
 
   return (
     <div className="login-container">
-      <div className="logo">
-        Aero<span>Code</span>
-      </div>
+      <div className="login-box">
+        <div className="login-header">
+          <div className="login-logo">SG</div>
+          <h1 className="login-title">Bem-vindo</h1>
+          <p className="login-subtitle">Sistema de Gestão Integrada</p>
+        </div>
 
-      <div className="form-wrapper">
-        <h2>Sistema de Gestão de Aeronaves</h2>
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Usuário</label>
+        <form className="login-form" onSubmit={handleSubmit}>
+          <div className="form-field">
+            <label className="field-label">Usuário</label>
             <input
               type="text"
+              className="field-input"
+              placeholder="Digite seu usuário"
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
               required
@@ -55,10 +57,12 @@ export default function Login({ onLogin }) {
             />
           </div>
 
-          <div className="form-group">
-            <label>Senha</label>
+          <div className="form-field">
+            <label className="field-label">Senha</label>
             <input
               type="password"
+              className="field-input"
+              placeholder="Digite sua senha"
               value={senha}
               onChange={(e) => setSenha(e.target.value)}
               required
@@ -66,12 +70,26 @@ export default function Login({ onLogin }) {
             />
           </div>
 
-          {error && <div className="error">{error}</div>}
+          <div className="remember-forgot">
+            <div className="remember-checkbox">
+              <input type="checkbox" id="remember" />
+              <label htmlFor="remember" className="remember-label">Lembrar-me</label>
+            </div>
+            <a href="#" className="forgot-link">Esqueceu a senha?</a>
+          </div>
 
-          <button type="submit" disabled={loading}>
-            {loading ? 'Entrando...' : 'Entrar'}
+          {error && <div className="alert alert-error">{error}</div>}
+
+          <button type="submit" className="submit-button" disabled={loading}>
+            {loading ? 'Entrando...' : 'Entrar no Sistema'}
           </button>
         </form>
+
+        <div className="divider">ou</div>
+
+        <div className="signup-link">
+          Não tem uma conta? <a href="#">Entre em contato</a>
+        </div>
       </div>
     </div>
   );

@@ -1,45 +1,43 @@
 import React, { useState } from 'react';
-import { relatorioService } from '../../services/api';
-import '../../styles/modalcadaero.css'; 
+import axios from 'axios';
+import '../../styles/modalgerarelatorio.css';
 
 function ModalGeraRelatorio({ onClose, aeronaveId }) {
-  const [formData, setFormData] = useState({ titulo: '', descricao: '' });
+  const [tipoRelatorio, setTipoRelatorio] = useState('completo');
   const [loading, setLoading] = useState(false);
-  const [statusMessage, setStatusMessage] = useState('');
   const [error, setError] = useState('');
 
-  const getUsuarioId = () => {
-    try {
-      const user = JSON.parse(localStorage.getItem('aerocodeUser'));
-      return user?.id || 1;
-    } catch { return 1; }
-  };
+  const handleGerar = async () => {
+    setError('');
+    setLoading(true);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setError(''); setStatusMessage('');
     try {
-      setLoading(true);
-      setStatusMessage('Gerando relatório...');
-      const res = await relatorioService.criar({
-        titulo: formData.titulo,
-        descricao: formData.descricao,
-        aeronaveId: String(aeronaveId),
-        usuarioId: String(getUsuarioId())
-      });
+      const token = localStorage.getItem('token');
+      const response = await axios.get(
+        `http://localhost:3000/api/relatorios/gerar/${aeronaveId}`,
+        {
+          params: { tipo: tipoRelatorio },
+          responseType: 'blob',
+          headers: token ? { Authorization: `Bearer ${token}` } : {}
+        }
+      );
       
-      const pdf = await relatorioService.downloadPDF(res.data.id);
-      const url = window.URL.createObjectURL(new Blob([pdf.data]));
+      // Cria um blob e faz download
+      const blob = new Blob([response.data], { type: 'application/pdf' });
+      const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', `Relatorio_${formData.titulo}.pdf`);
+      link.download = `relatorio-${tipoRelatorio}-aeronave-${aeronaveId}.pdf`;
       document.body.appendChild(link);
       link.click();
-      link.remove();
-      
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+
+      alert('Documento gerado com sucesso!');
       onClose();
     } catch (err) {
-      setError('Falha ao gerar relatório.');
+      console.error('Erro ao gerar documento:', err);
+      setError('Erro ao gerar documento. Verifique se o backend está rodando.');
     } finally {
       setLoading(false);
     }
@@ -47,28 +45,108 @@ function ModalGeraRelatorio({ onClose, aeronaveId }) {
 
   return (
     <>
-      <div className="modal-overlay" onClick={() => !loading && onClose()}></div>
-      <div className="modal-drawer">
-        <h2>Gerar Relatório Técnico</h2>
-        {error && <div className="error-message">{error}</div>}
-        {statusMessage && <div className="info-message">{statusMessage}</div>}
+      <div className="relatorio-modal-overlay" onClick={() => !loading && onClose()}></div>
 
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Título</label>
-            <input type="text" value={formData.titulo} onChange={e => setFormData({...formData, titulo: e.target.value})} placeholder="Ex: Relatório Final" required disabled={loading} />
+      <div className="relatorio-modal-container">
+        <div className="relatorio-modal-header">
+          <div className="relatorio-modal-title">
+            <div className="relatorio-icon">📄</div>
+            Gerar Documento
           </div>
-          <div className="form-group">
-            <label>Descrição</label>
-            <textarea value={formData.descricao} onChange={e => setFormData({...formData, descricao: e.target.value})} rows={5} placeholder="Detalhes técnicos..." required disabled={loading} style={{resize:'vertical'}} />
+          <p className="relatorio-modal-subtitle">
+            Escolha o tipo de documento para gerar
+          </p>
+          <button className="relatorio-close-button" onClick={() => !loading && onClose()}>
+            ×
+          </button>
+        </div>
+
+        <div className="relatorio-modal-body">
+          {error && <div className="input-error">{error}</div>}
+
+          <div className="relatorio-info">
+            <h3>Sobre o Documento</h3>
+            <p>
+              O documento será gerado em formato PDF com todas as informações
+              selecionadas do veículo.
+            </p>
           </div>
-          <div className="modal-actions">
-            <button type="button" onClick={onClose} className="btn-cancel" disabled={loading}>Cancelar</button>
-            <button type="submit" className="btn-save" disabled={loading}>{loading ? 'Processando...' : 'Gerar PDF'}</button>
+
+          <div className="relatorio-options">
+            <label className="relatorio-option">
+              <input
+                type="radio"
+                name="tipoRelatorio"
+                value="completo"
+                checked={tipoRelatorio === 'completo'}
+                onChange={(e) => setTipoRelatorio(e.target.value)}
+                disabled={loading}
+              />
+              <div className="relatorio-option-label">
+                <div className="relatorio-option-title">Documento Completo</div>
+                <div className="relatorio-option-description">
+                  Inclui todas as informações, fases, componentes e validações
+                </div>
+              </div>
+            </label>
+
+            <label className="relatorio-option">
+              <input
+                type="radio"
+                name="tipoRelatorio"
+                value="resumido"
+                checked={tipoRelatorio === 'resumido'}
+                onChange={(e) => setTipoRelatorio(e.target.value)}
+                disabled={loading}
+              />
+              <div className="relatorio-option-label">
+                <div className="relatorio-option-title">Documento Resumido</div>
+                <div className="relatorio-option-description">
+                  Apenas informações básicas e status atual
+                </div>
+              </div>
+            </label>
+
+            <label className="relatorio-option">
+              <input
+                type="radio"
+                name="tipoRelatorio"
+                value="tecnico"
+                checked={tipoRelatorio === 'tecnico'}
+                onChange={(e) => setTipoRelatorio(e.target.value)}
+                disabled={loading}
+              />
+              <div className="relatorio-option-label">
+                <div className="relatorio-option-title">Documento Técnico</div>
+                <div className="relatorio-option-description">
+                  Especificações técnicas detalhadas e validações
+                </div>
+              </div>
+            </label>
           </div>
-        </form>
+        </div>
+
+        <div className="relatorio-modal-footer">
+          <button
+            type="button"
+            className="relatorio-button relatorio-btn-cancel"
+            onClick={onClose}
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            className="relatorio-button relatorio-btn-submit"
+            onClick={handleGerar}
+            disabled={loading}
+          >
+            {loading ? 'Gerando...' : 'Gerar Documento'}
+          </button>
+        </div>
       </div>
     </>
   );
 }
+
 export default ModalGeraRelatorio;

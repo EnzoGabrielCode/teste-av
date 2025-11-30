@@ -1,4 +1,4 @@
-.phase-modal-overlay {
+.relatorio-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   to { opacity: 1; }
 }
 
-.phase-modal-container {
+.relatorio-modal-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -42,15 +42,15 @@
   }
 }
 
-.phase-modal-header {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+.relatorio-modal-header {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
   padding: 32px;
   border-radius: 20px 20px 0 0;
-  color: white;
+  color: #2d3748;
   position: relative;
 }
 
-.phase-modal-title {
+.relatorio-modal-title {
   font-size: 28px;
   font-weight: 800;
   margin-bottom: 8px;
@@ -59,10 +59,10 @@
   gap: 12px;
 }
 
-.phase-icon {
+.relatorio-icon {
   width: 44px;
   height: 44px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.5);
   border-radius: 12px;
   display: flex;
   align-items: center;
@@ -70,22 +70,22 @@
   font-size: 22px;
 }
 
-.phase-modal-subtitle {
+.relatorio-modal-subtitle {
   font-size: 14px;
-  opacity: 0.9;
+  opacity: 0.8;
   font-weight: 500;
 }
 
-.phase-close-button {
+.relatorio-close-button {
   position: absolute;
   top: 24px;
   right: 24px;
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.2);
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.5);
+  border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
-  color: white;
+  color: #2d3748;
   font-size: 20px;
   cursor: pointer;
   display: flex;
@@ -94,65 +94,79 @@
   transition: all 0.3s ease;
 }
 
-.phase-close-button:hover {
-  background: rgba(255, 255, 255, 0.3);
+.relatorio-close-button:hover {
+  background: rgba(255, 255, 255, 0.8);
   transform: rotate(90deg);
 }
 
-.phase-modal-body {
+.relatorio-modal-body {
   padding: 32px;
 }
 
-.phase-form-group {
+.relatorio-info {
+  background: #f7fafc;
+  padding: 20px;
+  border-radius: 12px;
   margin-bottom: 24px;
+  border: 2px solid #e2e8f0;
 }
 
-.phase-label {
+.relatorio-info h3 {
+  font-size: 16px;
   font-weight: 700;
   color: #2d3748;
+  margin-bottom: 12px;
+}
+
+.relatorio-info p {
   font-size: 14px;
-  letter-spacing: 0.3px;
+  color: #4a5568;
+  line-height: 1.6;
+}
+
+.relatorio-options {
   display: flex;
-  align-items: center;
-  gap: 4px;
-  margin-bottom: 8px;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.required-mark {
-  color: #ef4444;
-  font-size: 16px;
-}
-
-.phase-input,
-.phase-select,
-.phase-textarea {
-  width: 100%;
-  padding: 14px 16px;
+.relatorio-option {
+  padding: 16px;
   border: 2px solid #e2e8f0;
   border-radius: 12px;
-  font-size: 15px;
+  cursor: pointer;
   transition: all 0.3s ease;
-  background: #f7fafc;
-  font-family: inherit;
-}
-
-.phase-input:focus,
-.phase-select:focus,
-.phase-textarea:focus {
-  outline: none;
-  border-color: #fa709a;
   background: white;
-  box-shadow: 0 0 0 4px rgba(250, 112, 154, 0.1);
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.phase-input[type="date"],
-.phase-input[type="datetime-local"] {
+.relatorio-option:hover {
+  border-color: #ffecd2;
+  background: #fffbf7;
+}
+
+.relatorio-option input[type="radio"] {
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.phase-textarea {
-  resize: vertical;
-  min-height: 100px;
+.relatorio-option-label {
+  flex: 1;
+}
+
+.relatorio-option-title {
+  font-weight: 700;
+  color: #2d3748;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.relatorio-option-description {
+  font-size: 13px;
+  color: #718096;
 }
 
 .input-error {
@@ -165,7 +179,7 @@
   border: 1px solid #ef4444;
 }
 
-.phase-modal-footer {
+.relatorio-modal-footer {
   padding: 24px 32px;
   background: #f7fafc;
   border-radius: 0 0 20px 20px;
@@ -175,7 +189,7 @@
   border-top: 2px solid #e2e8f0;
 }
 
-.phase-button {
+.relatorio-button {
   padding: 14px 28px;
   border: none;
   border-radius: 12px;
@@ -188,43 +202,44 @@
   gap: 8px;
 }
 
-.phase-btn-cancel {
+.relatorio-btn-cancel {
   background: white;
   color: #4a5568;
   border: 2px solid #e2e8f0;
 }
 
-.phase-btn-cancel:hover {
+.relatorio-btn-cancel:hover {
   background: #f7fafc;
   border-color: #cbd5e0;
 }
 
-.phase-btn-submit {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-  color: white;
-  box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+.relatorio-btn-submit {
+  background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+  color: #2d3748;
+  box-shadow: 0 4px 12px rgba(255, 236, 210, 0.3);
 }
 
-.phase-btn-submit:hover {
+.relatorio-btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(250, 112, 154, 0.4);
+  box-shadow: 0 6px 20px rgba(255, 236, 210, 0.4);
 }
 
-.phase-btn-submit:disabled {
+.relatorio-btn-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 @media (max-width: 768px) {
-  .phase-modal-container {
+  .relatorio-modal-container {
     width: 95%;
   }
   
-  .phase-modal-footer {
+  .relatorio-modal-footer {
     flex-direction: column-reverse;
   }
   
-  .phase-button {
+  .relatorio-button {
     width: 100%;
     justify-content: center;
   }

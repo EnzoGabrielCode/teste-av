@@ -85,6 +85,6 @@ export interface DashboardStats {
 export interface CreateRelatorioDto {
   titulo: string;
   descricao: string;
-  aeronaveId: string;
-  usuarioId: string;
+  aeronaveId: number;
+  usuarioId: number;
 }

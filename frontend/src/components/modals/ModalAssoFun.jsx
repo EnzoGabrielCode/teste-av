@@ -48,7 +48,7 @@ function ModalAssocFuncionario({ onClose, codigoAeronave }) {
     setError('');
 
     if (!formData.etapaId || !formData.funcionarioId) {
-      setError('Selecione a etapa e o funcionário.');
+      setError('Selecione a fase e o colaborador.');
       return;
     }
 
@@ -58,11 +58,11 @@ function ModalAssocFuncionario({ onClose, codigoAeronave }) {
         parseInt(formData.etapaId),
         parseInt(formData.funcionarioId)
       );
-      alert('Funcionário associado com sucesso!');
+      alert('Colaborador associado com sucesso!');
       onClose();
     } catch (err) {
       console.error('Erro ao associar:', err);
-      setError(err.response?.data?.error || 'Erro ao associar funcionário');
+      setError(err.response?.data?.error || 'Erro ao associar colaborador');
     } finally {
       setLoading(false);
     }
@@ -71,82 +71,91 @@ function ModalAssocFuncionario({ onClose, codigoAeronave }) {
   if (loadingData) {
     return (
       <>
-        <div className="modal-overlay"></div>
-        <aside className="modal-drawer">
-          <div className="loading" style={{color:'#e5e7eb'}}>Carregando dados...</div>
-        </aside>
+        <div className="assign-modal-overlay"></div>
+        <div className="assign-modal-container">
+          <div className="spinner"></div>
+        </div>
       </>
     );
   }
 
   return (
     <>
-      <div className="modal-overlay" onClick={() => !loading && onClose()}></div>
+      <div className="assign-modal-overlay" onClick={() => !loading && onClose()}></div>
 
-      <aside className="modal-drawer">
-        <header className="modal-header">
-          <h2>Associar Funcionário</h2>
-          <p>Vincule um colaborador a uma etapa.</p>
-        </header>
-
-        {error && <div className="error-message">{error}</div>}
-
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Etapa</label>
-            <select
-              name="etapaId"
-              value={formData.etapaId}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            >
-              <option value="">Selecione uma etapa</option>
-              {etapas.map((etapa) => (
-                <option key={etapa.id} value={etapa.id}>
-                  {etapa.nome} ({etapa.status})
-                </option>
-              ))}
-            </select>
+      <div className="assign-modal-container">
+        <div className="assign-modal-header">
+          <div className="assign-modal-title">
+            <div className="assign-icon">🔗</div>
+            Associar Colaborador
           </div>
+          <p className="assign-modal-subtitle">Vincule um colaborador a uma fase</p>
+          <button className="assign-close-button" onClick={() => !loading && onClose()}>×</button>
+        </div>
 
-          <div className="form-group">
-            <label>Funcionário</label>
-            <select
-              name="funcionarioId"
-              value={formData.funcionarioId}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            >
-              <option value="">Selecione um funcionário</option>
-              {funcionarios.map((func) => (
-                <option key={func.id} value={func.id}>
-                  {func.nome} ({func.nivelPermissao})
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className="assign-modal-body">
+          {error && <div className="input-error">{error}</div>}
 
-          <div className="modal-actions">
-            <button
-              type="button"
-              onClick={onClose}
-              className="btn-cancel"
-              disabled={loading}
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="btn-save"
-              disabled={loading}
-            >
-              {loading ? 'Associando...' : 'Associar'}
-            </button>
-          </div>
-        </form>
-      </aside>
+          <form onSubmit={handleSubmit}>
+            <div className="search-section">
+              <label className="field-label">Fase do Cronograma</label>
+              <select
+                name="etapaId"
+                className="assign-search-input"
+                value={formData.etapaId}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              >
+                <option value="">Selecione uma fase</option>
+                {etapas.map((etapa) => (
+                  <option key={etapa.id} value={etapa.id}>
+                    {etapa.nome} ({etapa.status})
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="search-section">
+              <label className="field-label">Colaborador</label>
+              <select
+                name="funcionarioId"
+                className="assign-search-input"
+                value={formData.funcionarioId}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              >
+                <option value="">Selecione um colaborador</option>
+                {funcionarios.map((func) => (
+                  <option key={func.id} value={func.id}>
+                    {func.nome} ({func.nivelPermissao})
+                  </option>
+                ))}
+              </select>
+            </div>
+          </form>
+        </div>
+
+        <div className="assign-modal-footer">
+          <button
+            type="button"
+            onClick={onClose}
+            className="assign-button assign-btn-cancel"
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="assign-button assign-btn-submit"
+            disabled={loading}
+          >
+            {loading ? 'Associando...' : 'Associar'}
+          </button>
+        </div>
+      </div>
     </>
   );
 }

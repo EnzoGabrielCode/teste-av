@@ -1,4 +1,4 @@
-.phase-modal-overlay {
+.peca-modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
@@ -15,7 +15,7 @@
   to { opacity: 1; }
 }
 
-.phase-modal-container {
+.peca-modal-container {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -42,15 +42,15 @@
   }
 }
 
-.phase-modal-header {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+.peca-modal-header {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
   padding: 32px;
   border-radius: 20px 20px 0 0;
   color: white;
   position: relative;
 }
 
-.phase-modal-title {
+.peca-modal-title {
   font-size: 28px;
   font-weight: 800;
   margin-bottom: 8px;
@@ -59,7 +59,7 @@
   gap: 12px;
 }
 
-.phase-icon {
+.peca-icon {
   width: 44px;
   height: 44px;
   background: rgba(255, 255, 255, 0.2);
@@ -70,13 +70,13 @@
   font-size: 22px;
 }
 
-.phase-modal-subtitle {
+.peca-modal-subtitle {
   font-size: 14px;
   opacity: 0.9;
   font-weight: 500;
 }
 
-.phase-close-button {
+.peca-close-button {
   position: absolute;
   top: 24px;
   right: 24px;
@@ -94,20 +94,20 @@
   transition: all 0.3s ease;
 }
 
-.phase-close-button:hover {
+.peca-close-button:hover {
   background: rgba(255, 255, 255, 0.3);
   transform: rotate(90deg);
 }
 
-.phase-modal-body {
+.peca-modal-body {
   padding: 32px;
 }
 
-.phase-form-group {
+.peca-form-group {
   margin-bottom: 24px;
 }
 
-.phase-label {
+.peca-label {
   font-weight: 700;
   color: #2d3748;
   font-size: 14px;
@@ -123,9 +123,8 @@
   font-size: 16px;
 }
 
-.phase-input,
-.phase-select,
-.phase-textarea {
+.peca-input,
+.peca-select {
   width: 100%;
   padding: 14px 16px;
   border: 2px solid #e2e8f0;
@@ -136,23 +135,16 @@
   font-family: inherit;
 }
 
-.phase-input:focus,
-.phase-select:focus,
-.phase-textarea:focus {
+.peca-input:focus,
+.peca-select:focus {
   outline: none;
-  border-color: #fa709a;
+  border-color: #43e97b;
   background: white;
-  box-shadow: 0 0 0 4px rgba(250, 112, 154, 0.1);
+  box-shadow: 0 0 0 4px rgba(67, 233, 123, 0.1);
 }
 
-.phase-input[type="date"],
-.phase-input[type="datetime-local"] {
+.peca-select {
   cursor: pointer;
-}
-
-.phase-textarea {
-  resize: vertical;
-  min-height: 100px;
 }
 
 .input-error {
@@ -165,7 +157,7 @@
   border: 1px solid #ef4444;
 }
 
-.phase-modal-footer {
+.peca-modal-footer {
   padding: 24px 32px;
   background: #f7fafc;
   border-radius: 0 0 20px 20px;
@@ -175,7 +167,7 @@
   border-top: 2px solid #e2e8f0;
 }
 
-.phase-button {
+.peca-button {
   padding: 14px 28px;
   border: none;
   border-radius: 12px;
@@ -188,43 +180,44 @@
   gap: 8px;
 }
 
-.phase-btn-cancel {
+.peca-btn-cancel {
   background: white;
   color: #4a5568;
   border: 2px solid #e2e8f0;
 }
 
-.phase-btn-cancel:hover {
+.peca-btn-cancel:hover {
   background: #f7fafc;
   border-color: #cbd5e0;
 }
 
-.phase-btn-submit {
-  background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+.peca-btn-submit {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
   color: white;
-  box-shadow: 0 4px 12px rgba(250, 112, 154, 0.3);
+  box-shadow: 0 4px 12px rgba(67, 233, 123, 0.3);
 }
 
-.phase-btn-submit:hover {
+.peca-btn-submit:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(250, 112, 154, 0.4);
+  box-shadow: 0 6px 20px rgba(67, 233, 123, 0.4);
 }
 
-.phase-btn-submit:disabled {
+.peca-btn-submit:disabled {
   opacity: 0.6;
   cursor: not-allowed;
+  transform: none;
 }
 
 @media (max-width: 768px) {
-  .phase-modal-container {
+  .peca-modal-container {
     width: 95%;
   }
   
-  .phase-modal-footer {
+  .peca-modal-footer {
     flex-direction: column-reverse;
   }
   
-  .phase-button {
+  .peca-button {
     width: 100%;
     justify-content: center;
   }

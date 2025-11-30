@@ -11,7 +11,8 @@ import {
   MdAssignment, 
   MdScience, 
   MdDescription, 
-  MdSettings 
+  MdSettings,
+  MdCheckCircle
 } from 'react-icons/md';
 import ModalCadEtapa from '../components/modals/modalCadEtapa';
 import ModalAssocFuncionario from '../components/modals/ModalAssoFun';
@@ -60,7 +61,7 @@ function DetalheAeronave({ user = {} }) {
       const tem = etapasData.some((e) => e.status === 'ANDAMENTO');
       setTemEmAndamento(tem);
     } catch (err) {
-      console.error('Erro ao carregar dados da aeronave:', err);
+      console.error('Erro ao carregar dados do veículo:', err);
     } finally {
       setLoading(false);
     }
@@ -71,8 +72,8 @@ function DetalheAeronave({ user = {} }) {
       await etapaService.atualizarStatus(etapa.id, 'ANDAMENTO');
       await carregarDados();
     } catch (err) {
-      console.error('Erro ao iniciar etapa:', err);
-      alert('Erro ao iniciar etapa');
+      console.error('Erro ao iniciar fase:', err);
+      alert('Erro ao iniciar fase');
     }
   };
 
@@ -81,8 +82,33 @@ function DetalheAeronave({ user = {} }) {
       await etapaService.atualizarStatus(etapa.id, 'CONCLUIDA');
       await carregarDados();
     } catch (err) {
-      console.error('Erro ao concluir etapa:', err);
-      alert('Erro ao concluir etapa');
+      console.error('Erro ao concluir fase:', err);
+      alert('Erro ao concluir fase');
+    }
+  };
+
+  const handleFinalizarAeronave = async () => {
+    const todasConcluidas = etapas.every(e => e.status === 'CONCLUIDA');
+    
+    if (!todasConcluidas) {
+      const confirmar = window.confirm(
+        'Atenção: Nem todas as fases foram concluídas. Deseja realmente finalizar este veículo?'
+      );
+      if (!confirmar) return;
+    } else {
+      const confirmar = window.confirm(
+        'Tem certeza que deseja marcar este veículo como CONCLUÍDO?'
+      );
+      if (!confirmar) return;
+    }
+
+    try {
+      await aeronaveService.atualizar(aeronave.id, { status: 'CONCLUIDA' });
+      alert('Veículo finalizado com sucesso!');
+      await carregarDados();
+    } catch (err) {
+      console.error('Erro ao finalizar veículo:', err);
+      alert('Erro ao finalizar veículo');
     }
   };
 
@@ -110,7 +136,25 @@ function DetalheAeronave({ user = {} }) {
     setShowRelatorioModal(false);
   };
 
-  if (loading || !aeronave) return <div className="detalhe-container"><div className="loading" style={{color:'#fff'}}>Carregando...</div></div>;
+  const handleDelete = async () => {
+    if (window.confirm('Tem certeza que deseja excluir este veículo?')) {
+      try {
+        await aeronaveService.deletar(aeronave.id);
+        alert('Veículo excluído com sucesso!');
+        navigate('/aeronaves');
+      } catch (err) {
+        alert('Erro ao excluir veículo');
+      }
+    }
+  };
+
+  if (loading || !aeronave) {
+    return (
+      <div className="vehicle-detail-page">
+        <div className="spinner"></div>
+      </div>
+    );
+  }
 
   const isOperador = user.nivel === 'operador';
   const canManage = user.nivel === 'administrador' || user.nivel === 'engenheiro';
@@ -126,153 +170,204 @@ function DetalheAeronave({ user = {} }) {
   const primeiraPendente = etapasOrdenadas.find((e) => e.status === 'PENDENTE');
   const primeiraPendenteId = primeiraPendente?.id;
 
+  const getStatusClass = (status) => {
+    const map = {
+      'EM_MANUTENCAO': 'status-maintenance',
+      'EM_PRODUCAO': 'status-production',
+      'CONCLUIDA': 'status-completed',
+      'CANCELADA': 'status-cancelled'
+    };
+    return map[status] || '';
+  };
+
+  const podeFinalizar = canManage && (aeronave.status === 'EM_MANUTENCAO' || aeronave.status === 'EM_PRODUCAO');
+
   return (
-    <div className="detalhe-container">
-      
-      <button className="btn-voltar" onClick={() => navigate(-1)}>
-        <MdArrowBack /> Voltar
-      </button>
+    <div className="vehicle-detail-page">
+      <div className="detail-header">
+        <button className="back-button" onClick={() => navigate(-1)}>
+          <MdArrowBack /> Voltar
+        </button>
 
-      <header className="detalhe-header">
-        <div className="header-info">
-          <h1>
-            {aeronave.modelo} 
-            <span className="codigo-badge">{aeronave.codigo}</span>
-          </h1>
+        <div className="detail-title-section">
+          <div className="vehicle-main-info">
+            <div className="vehicle-code-badge">{aeronave.codigo}</div>
+            <h1>{aeronave.modelo}</h1>
+            <div className="vehicle-manufacturer-info">{aeronave.fabricante}</div>
+          </div>
+          <div className="detail-actions">
+            <button className="action-button btn-delete-vehicle" onClick={handleDelete}>
+              Excluir
+            </button>
+          </div>
         </div>
-        <div className="header-actions">
-          <span className={`status-badge-lg status-${aeronave.status?.toLowerCase()}`}>
-            {aeronave.status?.replace('_', ' ')}
-          </span>
-        </div>
-      </header>
+      </div>
 
-      <div className="detalhe-grid">
-        
-        <div className="main-column" style={{display: 'flex', flexDirection: 'column', gap: '24px'}}>
+      <div className="detail-content">
+        <div className="detail-section">
+          <div className="section-title">
+            <div className="section-icon"><MdSettings /></div>
+            Especificações Técnicas
+          </div>
+          <div className="specs-grid">
+            <div className="spec-item">
+              <span className="spec-label">Empresa</span>
+              <span className="spec-value">{aeronave.fabricante}</span>
+            </div>
+            <div className="spec-item">
+              <span className="spec-label">Ano de Criação</span>
+              <span className="spec-value">{aeronave.anoFabricacao}</span>
+            </div>
+            <div className="spec-item">
+              <span className="spec-label">Lotação</span>
+              <span className="spec-value">{aeronave.capacidade} pax</span>
+            </div>
+            <div className="spec-item">
+              <span className="spec-label">Distância Máx</span>
+              <span className="spec-value">{aeronave.alcance} km</span>
+            </div>
+            <div className="spec-item">
+              <span className="spec-label">Categoria</span>
+              <span className="spec-value">{aeronave.tipo}</span>
+            </div>
+            <div className="spec-item">
+              <span className="spec-label">Situação</span>
+              <div className={`status-indicator ${getStatusClass(aeronave.status)}`}>
+                <div className="status-dot"></div>
+                {aeronave.status?.replace('_', ' ')}
+              </div>
+            </div>
+          </div>
           
-          <section className="detalhe-card">
-            <div className="card-header">
-              <h3><MdSettings /> Especificações</h3>
-            </div>
-            <div className="info-grid">
-              <div className="info-item">
-                <span className="info-label">Fabricante</span>
-                <span className="info-value">{aeronave.fabricante}</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Ano</span>
-                <span className="info-value">{aeronave.anoFabricacao}</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Capacidade</span>
-                <span className="info-value">{aeronave.capacidade} pax</span>
-              </div>
-              <div className="info-item">
-                <span className="info-label">Alcance</span>
-                <span className="info-value">{aeronave.alcance} km</span>
-              </div>
-            </div>
-          </section>
-
-          <section className="detalhe-card">
-            <div className="card-header">
-              <h3><MdAssignment /> Cronograma</h3>
-              {canManage && (
-                <div style={{display:'flex', gap: 8}}>
-                  <button className="btn-timeline btn-start" onClick={() => setShowAssocModal(true)} title="Associar Funcionário">
-                    <MdPerson size={16}/> Associar
-                  </button>
-                  <button className="btn-timeline btn-start" onClick={() => setShowEtapaModal(true)} title="Nova Etapa">
-                    <MdAdd size={16}/> Nova Etapa
-                  </button>
-                </div>
-              )}
-            </div>
-
-            <div className="timeline">
-              {etapasOrdenadas.length === 0 ? (
-                <p style={{color: '#94a3b8', fontStyle: 'italic', padding: '10px'}}>Nenhuma etapa cadastrada.</p>
-              ) : (
-                etapasOrdenadas.map((etapa, idx) => (
-                  <div key={etapa.id} className={`etapa-row status-${etapa.status.toLowerCase()}`}>
-                    <div className="etapa-icon">{idx + 1}</div>
-                    <div className="etapa-content">
-                      <div className="etapa-title">
-                        {etapa.nome}
-                        <span style={{fontSize: '0.75rem', opacity: 0.7, border: '1px solid white', padding: '2px 6px', borderRadius: '4px'}}>
-                          {etapa.status}
-                        </span>
-                      </div>
-                      <div className="etapa-meta">
-                        <span>Prazo: {new Date(etapa.prazo).toLocaleDateString('pt-BR')}</span>
-                        <span>Resp: {etapa.funcionarios && etapa.funcionarios.length > 0 
-                          ? etapa.funcionarios.map(f => f.nome).join(', ') 
-                          : 'Não atribuído'}
-                        </span>
-                      </div>
-                    </div>
-                    <div className="etapa-actions">
-                      {etapa.status === 'ANDAMENTO' && (
-                        <button className="btn-timeline btn-finish" onClick={() => handleConcluir(etapa)}>
-                          <MdCheck /> Concluir
-                        </button>
-                      )}
-                      {etapa.status === 'PENDENTE' && !temEmAndamento && etapa.id === primeiraPendenteId && (
-                        <button className="btn-timeline btn-start" onClick={() => handleIniciar(etapa)}>
-                          <MdPlayArrow /> Iniciar
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ))
-              )}
-            </div>
-          </section>
+          {podeFinalizar && (
+            <button 
+              className="action-button" 
+              style={{
+                marginTop: '16px', 
+                width: '100%',
+                backgroundColor: '#10b981',
+                borderColor: '#10b981'
+              }}
+              onClick={handleFinalizarAeronave}
+            >
+              <MdCheckCircle /> Finalizar Veículo
+            </button>
+          )}
         </div>
 
-        <aside className="sidebar-stack">
-          {!isOperador && (
-            <section className="detalhe-card">
-              <div className="card-header"><h3><MdBuild /> Ações</h3></div>
-              <div className="painel-controle">
-                <button className="btn-controle primary" onClick={() => setShowTesteModal(true)}>
-                  <MdScience size={20} /> Registrar Teste
-                </button>
-                <button className="btn-controle" onClick={() => setShowRelatorioModal(true)}>
-                  <MdDescription size={20} /> Gerar Relatório
-                </button>
+        <div className="detail-section">
+          <div className="section-title">
+            <div className="section-icon"><MdBuild /></div>
+            Componentes Instalados
+          </div>
+          {pecas.length === 0 ? (
+              <div className="empty-state">
+                <p className="empty-state-text">Nenhum componente instalado</p>
               </div>
-            </section>
-          )}
-
-          <section className="detalhe-card">
-            <div className="card-header">
-              <h3><MdSettings /> Peças</h3>
-              {canManage && (
-                <button className="btn-voltar" style={{margin:0, color:'#f97316'}} onClick={() => setShowPecaModal(true)}>
-                  <MdAdd size={20} />
-                </button>
-              )}
-            </div>
-            
-            <div className="pecas-list">
-              {pecas.length === 0 ? (
-                <p style={{color: '#94a3b8', fontSize: '0.9rem', padding:'10px'}}>Nenhuma peça instalada.</p>
-              ) : (
-                pecas.map(peca => (
-                  <div key={peca.id} className="peca-item">
+            ) : (
+              <div className="components-list">
+                {pecas.map(peca => (
+                  <div key={peca.id} className="component-item">
                     <div>
-                      <strong>{peca.nome}</strong>
-                      <small>Fornec: {peca.fornecedor}</small>
+                      <div className="component-name">{peca.nome}</div>
+                      <div className="component-details">
+                        <span className="component-supplier">Distribuidor: {peca.fornecedor}</span>
+                      </div>
                     </div>
-                    <span className="peca-tag">{peca.tipo}</span>
+                    <span className={`origin-badge ${peca.tipo === 'NACIONAL' ? 'origin-domestic' : 'origin-imported'}`}>
+                      {peca.tipo === 'NACIONAL' ? 'Nacional' : 'Importada'}
+                    </span>
                   </div>
-                ))
-              )}
+                ))}
+              </div>
+            )}
+          {canManage && (
+            <button className="add-item-btn" onClick={() => setShowPecaModal(true)}>
+              <MdAdd /> Adicionar Componente
+            </button>
+          )}
+        </div>
+
+        <div className="detail-section full-width-section">
+          <div className="section-title">
+            <div className="section-icon"><MdAssignment /></div>
+            Cronograma de Fases
+          </div>
+          {canManage && (
+            <div style={{display: 'flex', gap: '12px', marginBottom: '20px'}}>
+              <button className="action-button" onClick={() => setShowAssocModal(true)}>
+                <MdPerson /> Associar Colaborador
+              </button>
+              <button className="action-button" onClick={() => setShowEtapaModal(true)}>
+                <MdAdd /> Nova Fase
+              </button>
             </div>
-          </section>
-        </aside>
+          )}
+          {etapasOrdenadas.length === 0 ? (
+            <div className="empty-state">
+              <p className="empty-state-text">Nenhuma fase cadastrada</p>
+            </div>
+          ) : (
+            <div className="phases-timeline">
+              {etapasOrdenadas.map((etapa, idx) => (
+                <div key={etapa.id} className="timeline-item">
+                  <div className="timeline-dot"></div>
+                  <div className="phase-card">
+                    <div className="phase-header">
+                      <div className="phase-name">{etapa.nome}</div>
+                      <span className={`phase-status status-${etapa.status.toLowerCase()}`}>
+                        {etapa.status}
+                      </span>
+                    </div>
+                    <div className="phase-deadline">
+                      📅 Prazo: {new Date(etapa.prazo).toLocaleDateString('pt-BR')}
+                    </div>
+                    <div className="phase-deadline">
+                      👤 Responsáveis: {etapa.funcionarios && etapa.funcionarios.length > 0 
+                        ? etapa.funcionarios.map(f => f.nome).join(', ') 
+                        : 'Não atribuído'}
+                    </div>
+                    {etapa.status === 'ANDAMENTO' && (
+                      <button 
+                        className="action-button" 
+                        style={{marginTop: '12px', width: '100%'}}
+                        onClick={() => handleConcluir(etapa)}
+                      >
+                        <MdCheck /> Marcar como Finalizada
+                      </button>
+                    )}
+                    {etapa.status === 'PENDENTE' && !temEmAndamento && etapa.id === primeiraPendenteId && (
+                      <button 
+                        className="action-button" 
+                        style={{marginTop: '12px', width: '100%'}}
+                        onClick={() => handleIniciar(etapa)}
+                      >
+                        <MdPlayArrow /> Iniciar Fase
+                      </button>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {!isOperador && (
+          <div className="detail-section full-width-section">
+            <div className="section-title">
+              <div className="section-icon"><MdScience /></div>
+              Ações Disponíveis
+            </div>
+            <div style={{display: 'flex', gap: '12px'}}>
+              <button className="action-button" onClick={() => setShowTesteModal(true)}>
+                <MdScience /> Registrar Validação
+              </button>
+              <button className="action-button" onClick={() => setShowRelatorioModal(true)}>
+                <MdDescription /> Gerar Documento
+              </button>
+            </div>
+          </div>
+        )}
       </div>
 
       {showEtapaModal && (

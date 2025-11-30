@@ -19,7 +19,6 @@ function ModalCadFuncionario({ onClose }) {
 
     if (name === 'telefone') {
       const apenasNumeros = value.replace(/\D/g, '');
-
       let telefoneFormatado = apenasNumeros;
 
       if (apenasNumeros.length > 0) {
@@ -49,7 +48,7 @@ function ModalCadFuncionario({ onClose }) {
 
     const telefoneNumeros = formData.telefone.replace(/\D/g, '');
     if (telefoneNumeros.length !== 11) {
-      setError('O telefone deve ter 11 dígitos (DDD + 9 dígitos)');
+      setError('O contato deve ter 11 dígitos (DDD + 9 dígitos)');
       return;
     }
 
@@ -66,12 +65,11 @@ function ModalCadFuncionario({ onClose }) {
       };
 
       await funcionarioService.criar(novoFuncionario);
-
-      alert('Funcionário cadastrado com sucesso!');
+      alert('Colaborador cadastrado com sucesso!');
       onClose(true);
     } catch (err) {
-      console.error('Erro ao cadastrar funcionário:', err);
-      setError(err.response?.data?.error || 'Erro ao cadastrar funcionário');
+      console.error('Erro ao cadastrar colaborador:', err);
+      setError(err.response?.data?.error || 'Erro ao cadastrar colaborador');
     } finally {
       setLoading(false);
     }
@@ -79,123 +77,147 @@ function ModalCadFuncionario({ onClose }) {
 
   return (
     <>
-      <div
-        className="funcionario-modal-overlay"
-        onClick={() => !loading && onClose()}
-      ></div>
+      <div className="employee-modal-overlay" onClick={() => !loading && onClose(false)}></div>
 
-      <aside className="funcionario-modal-drawer">
-        <header className="funcionario-modal-header">
-          <h2>Cadastro de Funcionário</h2>
-          <p>Preencha os dados para adicionar um novo colaborador ao sistema.</p>
-        </header>
-
-        {error && (
-          <div className="funcionario-modal-error-message">{error}</div>
-        )}
-
-        <form className="funcionario-modal-form" onSubmit={handleSubmit}>
-          <div className="funcionario-modal-form-group">
-            <label>Nome</label>
-            <input
-              type="text"
-              name="nome"
-              placeholder="Ex: João Silva"
-              value={formData.nome}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            />
+      <div className="employee-modal-container">
+        <div className="employee-modal-header">
+          <div className="employee-modal-title">
+            <div className="employee-icon">👤</div>
+            Cadastro de Colaborador
           </div>
+          <p className="employee-modal-subtitle">Adicione um novo membro à equipe</p>
+          <button className="employee-close-button" onClick={() => !loading && onClose(false)}>×</button>
+        </div>
 
-          <div className="funcionario-modal-form-group">
-            <label>Telefone</label>
-            <input
-              type="text"
-              name="telefone"
-              placeholder="(11) 99999-9999"
-              value={formData.telefone}
-              onChange={handleChange}
-              maxLength="15"
-              required
-              disabled={loading}
-            />
-          </div>
+        <div className="employee-modal-body">
+          {error && <div className="input-error">{error}</div>}
 
-          <div className="funcionario-modal-form-group">
-            <label>Endereço</label>
-            <input
-              type="text"
-              name="endereco"
-              placeholder="Ex: Rua das Flores, 123"
-              value={formData.endereco}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            />
-          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="employee-form-grid">
+              <div className="employee-form-group full-width">
+                <label className="employee-label">Nome Completo <span className="required-mark">*</span></label>
+                <input
+                  type="text"
+                  name="nome"
+                  className="employee-input"
+                  placeholder="Ex: João Silva"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
 
-          <div className="funcionario-modal-form-group">
-            <label>Usuário</label>
-            <input
-              type="text"
-              name="usuario"
-              placeholder="Ex: joaosilva"
-              value={formData.usuario}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            />
-          </div>
+              <div className="employee-form-group">
+                <label className="employee-label">Contato <span className="required-mark">*</span></label>
+                <input
+                  type="text"
+                  name="telefone"
+                  className="employee-input"
+                  placeholder="(11) 99999-9999"
+                  value={formData.telefone}
+                  onChange={handleChange}
+                  maxLength="15"
+                  required
+                  disabled={loading}
+                />
+              </div>
 
-          <div className="funcionario-modal-form-group">
-            <label>Senha</label>
-            <input
-              type="password"
-              name="senha"
-              placeholder="Digite uma senha (mínimo 6 caracteres)"
-              value={formData.senha}
-              onChange={handleChange}
-              required
-              minLength="6"
-              disabled={loading}
-            />
-          </div>
+              <div className="employee-form-group">
+                <label className="employee-label">Localização <span className="required-mark">*</span></label>
+                <input
+                  type="text"
+                  name="endereco"
+                  className="employee-input"
+                  placeholder="Ex: Rua das Flores, 123"
+                  value={formData.endereco}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
 
-          <div className="funcionario-modal-form-group">
-            <label>Nível de Permissão</label>
-            <select
-              name="nivelPermissao"
-              value={formData.nivelPermissao}
-              onChange={handleChange}
-              required
-              disabled={loading}
-            >
-              <option value="OPERADOR">Operador</option>
-              <option value="ENGENHEIRO">Engenheiro</option>
-              <option value="ADMINISTRADOR">Administrador</option>
-            </select>
-          </div>
+              <div className="employee-form-group">
+                <label className="employee-label">Login <span className="required-mark">*</span></label>
+                <input
+                  type="text"
+                  name="usuario"
+                  className="employee-input"
+                  placeholder="Ex: joaosilva"
+                  value={formData.usuario}
+                  onChange={handleChange}
+                  required
+                  disabled={loading}
+                />
+              </div>
 
-          <div className="funcionario-modal-actions">
-            <button
-              type="button"
-              onClick={() => onClose()}
-              className="funcionario-btn-modal-cancel"
-              disabled={loading}
-            >
-              Cancelar
-            </button>
-            <button
-              type="submit"
-              className="funcionario-btn-modal-save"
-              disabled={loading}
-            >
-              {loading ? 'Salvando...' : 'Salvar'}
-            </button>
-          </div>
-        </form>
-      </aside>
+              <div className="employee-form-group">
+                <label className="employee-label">Chave de Acesso <span className="required-mark">*</span></label>
+                <input
+                  type="password"
+                  name="senha"
+                  className="employee-input"
+                  placeholder="Digite uma senha (mínimo 6 caracteres)"
+                  value={formData.senha}
+                  onChange={handleChange}
+                  required
+                  minLength="6"
+                  disabled={loading}
+                />
+              </div>
+
+              <div className="employee-form-group full-width">
+                <label className="employee-label">Tipo de Acesso <span className="required-mark">*</span></label>
+                <div className="permission-selector">
+                  <div 
+                    className={`permission-card ${formData.nivelPermissao === 'OPERADOR' ? 'selected' : ''}`}
+                    onClick={() => !loading && setFormData({...formData, nivelPermissao: 'OPERADOR'})}
+                  >
+                    <div className="permission-icon">🔧</div>
+                    <div className="permission-name">Assistente</div>
+                    <div className="permission-description">Operações básicas</div>
+                  </div>
+                  <div 
+                    className={`permission-card ${formData.nivelPermissao === 'ENGENHEIRO' ? 'selected' : ''}`}
+                    onClick={() => !loading && setFormData({...formData, nivelPermissao: 'ENGENHEIRO'})}
+                  >
+                    <div className="permission-icon">⚙️</div>
+                    <div className="permission-name">Técnico</div>
+                    <div className="permission-description">Acesso avançado</div>
+                  </div>
+                  <div 
+                    className={`permission-card ${formData.nivelPermissao === 'ADMINISTRADOR' ? 'selected' : ''}`}
+                    onClick={() => !loading && setFormData({...formData, nivelPermissao: 'ADMINISTRADOR'})}
+                  >
+                    <div className="permission-icon">👑</div>
+                    <div className="permission-name">Gestor</div>
+                    <div className="permission-description">Controle total</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div className="employee-modal-footer">
+          <button
+            type="button"
+            onClick={() => onClose(false)}
+            className="employee-button employee-btn-cancel"
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            onClick={handleSubmit}
+            className="employee-button employee-btn-submit"
+            disabled={loading}
+          >
+            {loading ? 'Salvando...' : 'Salvar Colaborador'}
+          </button>
+        </div>
+      </div>
     </>
   );
 }

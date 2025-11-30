@@ -1,25 +1,36 @@
 import React, { useState } from 'react';
-import '../../styles/modalcadaero.css';  
-import { pecaService } from '../../services/api'; 
+import { pecaService } from '../../services/api';
+import '../../styles/modalcadpeca.css';
 
-function ModalCadPeca({ onClose, codigoVisivel, aeronaveId }) {
-  const [formData, setFormData] = useState({ nomePeca: '', tipo: 'NACIONAL', fornecedor: '' });
+function ModalCadPeca({ onClose, aeronaveId, codigoVisivel }) {
+  const [formData, setFormData] = useState({
+    nome: '',
+    fornecedor: '',
+    tipo: 'NACIONAL',
+  });
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!aeronaveId) return alert('Erro: ID da aeronave ausente');
+    setError('');
+
     try {
       setLoading(true);
       await pecaService.criar({
-        nome: formData.nomePeca,
-        tipo: formData.tipo,
-        fornecedor: formData.fornecedor,
-        aeronaveId: Number(aeronaveId),
+        ...formData,
+        aeronaveId: parseInt(aeronaveId),
       });
+      alert('Componente adicionado com sucesso!');
       onClose();
-    } catch (error) {
-      alert('Erro ao salvar peça.');
+    } catch (err) {
+      console.error('Erro ao cadastrar componente:', err);
+      setError(err.response?.data?.error || 'Erro ao cadastrar componente');
     } finally {
       setLoading(false);
     }
@@ -27,38 +38,98 @@ function ModalCadPeca({ onClose, codigoVisivel, aeronaveId }) {
 
   return (
     <>
-      <div className="modal-overlay" onClick={onClose}></div>
-      <div className="modal-drawer">
-        <h2>Adicionar Peça</h2>
-        <form className="modal-form" onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label>Aeronave</label>
-            <input type="text" value={codigoVisivel} disabled style={{opacity: 0.7}} />
+      <div className="peca-modal-overlay" onClick={() => !loading && onClose()}></div>
+
+      <div className="peca-modal-container">
+        <div className="peca-modal-header">
+          <div className="peca-modal-title">
+            <div className="peca-icon">🔧</div>
+            Adicionar Componente
           </div>
-          <div className="form-group">
-            <label>Nome da Peça</label>
-            <input type="text" value={formData.nomePeca} onChange={e => setFormData({...formData, nomePeca: e.target.value})} placeholder="Ex: Altímetro" required />
-          </div>
-          <div className="form-row">
-            <div className="form-group">
-              <label>Tipo</label>
-              <select value={formData.tipo} onChange={e => setFormData({...formData, tipo: e.target.value})}>
+          <p className="peca-modal-subtitle">
+            Veículo: {codigoVisivel}
+          </p>
+          <button className="peca-close-button" onClick={() => !loading && onClose()}>
+            ×
+          </button>
+        </div>
+
+        <div className="peca-modal-body">
+          {error && <div className="input-error">{error}</div>}
+
+          <form onSubmit={handleSubmit}>
+            <div className="peca-form-group">
+              <label className="peca-label">
+                Nome do Componente <span className="required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                name="nome"
+                className="peca-input"
+                placeholder="Ex: Motor V8"
+                value={formData.nome}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div className="peca-form-group">
+              <label className="peca-label">
+                Distribuidor <span className="required-mark">*</span>
+              </label>
+              <input
+                type="text"
+                name="fornecedor"
+                className="peca-input"
+                placeholder="Ex: Auto Parts Inc"
+                value={formData.fornecedor}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              />
+            </div>
+
+            <div className="peca-form-group">
+              <label className="peca-label">
+                Origem <span className="required-mark">*</span>
+              </label>
+              <select
+                name="tipo"
+                className="peca-select"
+                value={formData.tipo}
+                onChange={handleChange}
+                required
+                disabled={loading}
+              >
                 <option value="NACIONAL">Nacional</option>
                 <option value="IMPORTADA">Importada</option>
               </select>
             </div>
-            <div className="form-group">
-              <label>Fornecedor</label>
-              <input type="text" value={formData.fornecedor} onChange={e => setFormData({...formData, fornecedor: e.target.value})} placeholder="Ex: Embraer" required />
-            </div>
-          </div>
-          <div className="modal-actions">
-            <button type="button" onClick={onClose} className="btn-cancel" disabled={loading}>Cancelar</button>
-            <button type="submit" className="btn-save" disabled={loading}>{loading ? 'Salvando...' : 'Salvar'}</button>
-          </div>
-        </form>
+          </form>
+        </div>
+
+        <div className="peca-modal-footer">
+          <button
+            type="button"
+            className="peca-button peca-btn-cancel"
+            onClick={onClose}
+            disabled={loading}
+          >
+            Cancelar
+          </button>
+          <button
+            type="button"
+            className="peca-button peca-btn-submit"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
+            {loading ? 'Salvando...' : 'Adicionar Componente'}
+          </button>
+        </div>
       </div>
     </>
   );
 }
+
 export default ModalCadPeca;

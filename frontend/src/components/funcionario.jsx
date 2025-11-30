@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { funcionarioService } from '../services/api';
-import ModalCadFuncionario from '../components/modals/ModalCadFuncionario';
+import ModalCadFuncionario from './modals/ModalCadFuncionario';
 import '../styles/funcionarios.css';
-import { MdPersonAdd, MdDelete } from 'react-icons/md';
 
-function FuncionarioAdmin() {
-  const [showModal, setShowModal] = useState(false);
+export default function Funcionarios() {
   const [funcionarios, setFuncionarios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [busca, setBusca] = useState('');
+  const [filtroPermissao, setFiltroPermissao] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     carregarFuncionarios();
@@ -19,242 +20,149 @@ function FuncionarioAdmin() {
       setLoading(true);
       const response = await funcionarioService.listar();
       setFuncionarios(response.data);
+      setError('');
     } catch (err) {
-      console.error('Erro ao carregar funcionários:', err);
-      setError('Erro ao carregar funcionários');
+      console.error('Erro ao carregar colaboradores:', err);
+      setError('Erro ao carregar lista de colaboradores');
     } finally {
       setLoading(false);
     }
   };
 
-  const excluirFuncionario = async (id) => {
-    if (!window.confirm('Tem certeza que deseja excluir este funcionário?')) {
-      return;
-    }
-
-    try {
-      await funcionarioService.deletar(id);
-      setFuncionarios((prev) => prev.filter((f) => f.id !== id));
-      alert('Funcionário excluído com sucesso!');
-    } catch (err) {
-      console.error('Erro ao excluir funcionário:', err);
-      alert('Erro ao excluir funcionário');
+  const handleDelete = async (id) => {
+    if (window.confirm('Tem certeza que deseja excluir este colaborador?')) {
+      try {
+        await funcionarioService.deletar(id);
+        carregarFuncionarios();
+      } catch (err) {
+        alert('Erro ao excluir colaborador');
+      }
     }
   };
 
-  const handleModalClose = (novoFuncionario) => {
+  const handleModalClose = (refresh) => {
     setShowModal(false);
-    if (novoFuncionario) {
+    if (refresh) {
       carregarFuncionarios();
     }
   };
 
+  const funcionariosFiltrados = funcionarios.filter((f) => {
+    const matchBusca = f.nome.toLowerCase().includes(busca.toLowerCase()) ||
+                       f.usuario.toLowerCase().includes(busca.toLowerCase());
+    const matchPermissao = !filtroPermissao || f.nivelPermissao === filtroPermissao;
+    return matchBusca && matchPermissao;
+  });
+
+  const getPermissaoClass = (permissao) => {
+    const map = {
+      'ADMINISTRADOR': 'permission-admin',
+      'ENGENHEIRO': 'permission-engineer',
+      'OPERADOR': 'permission-operator'
+    };
+    return map[permissao] || 'permission-operator';
+  };
+
+  const getPermissaoText = (permissao) => {
+    const map = {
+      'ADMINISTRADOR': 'Gestor',
+      'ENGENHEIRO': 'Técnico',
+      'OPERADOR': 'Assistente'
+    };
+    return map[permissao] || permissao;
+  };
+
   if (loading) {
     return (
-      <div className="funcionario-page">
-        <div className="funcionario-loading">Carregando funcionários...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="funcionario-page">
-        <div className="funcionario-error">{error}</div>
+      <div className="employees-page">
+        <div className="spinner"></div>
       </div>
     );
   }
 
   return (
-    <div className="funcionario-page">
-      <header className="funcionario-header">
-        <div>
-          <h1>Gestão de Funcionários</h1>
-          <p className="funcionario-subtitle">
-            Gerencie usuários, níveis de permissão e acessos ao sistema.
-          </p>
-        </div>
+    <div className="employees-page">
+      <div className="employees-header">
+        <h1 className="employees-title">
+          <div className="employees-icon">👥</div>
+          Gestão de Colaboradores
+        </h1>
+        <button className="add-employee-btn" onClick={() => setShowModal(true)}>
+          + Adicionar Colaborador
+        </button>
+      </div>
 
-        <div className="funcionario-header-actions">
-          <button
-            className="funcionario-btn-primary"
-            onClick={() => setShowModal(true)}
-          >
-            <MdPersonAdd />
-            <span>Novo Funcionário</span>
-          </button>
-        </div>
-      </header>
+      <div className="search-section">
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Buscar por nome ou usuário..."
+          value={busca}
+          onChange={(e) => setBusca(e.target.value)}
+        />
+        <select
+          className="filter-permission"
+          value={filtroPermissao}
+          onChange={(e) => setFiltroPermissao(e.target.value)}
+        >
+          <option value="">Todos os acessos</option>
+          <option value="ADMINISTRADOR">Gestor</option>
+          <option value="ENGENHEIRO">Técnico</option>
+          <option value="OPERADOR">Assistente</option>
+        </select>
+      </div>
 
-      <main className="funcionario-main">
-        <section className="funcionario-table-section">
-          <div className="funcionario-section-header">
-            <h2>Lista de Funcionários</h2>
-            <span className="funcionario-section-badge">
-              Total: {funcionarios.length || 0}
-            </span>
-          </div>
+      {error && <div className="alert alert-error">{error}</div>}
 
-          <div className="funcionario-table-wrapper">
-            <table className="funcionario-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Telefone</th>
-                  <th>Usuário</th>
-                  <th>Nível</th>
-                  <th style={{ textAlign: 'right' }}>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {funcionarios.length === 0 ? (
-                  <tr>
-                    <td colSpan="6" className="funcionario-empty-row">
-                      Nenhum funcionário cadastrado.
-                    </td>
-                  </tr>
-                ) : (
-                  funcionarios.map((func) => (
-                    <tr key={func.id}>
-                      <td>{func.id}</td>
-                      <td>{func.nome}</td>
-                      <td>{func.telefone}</td>
-                      <td>{func.usuario}</td>
-                      <td
-                        className={`funcionario-nivel-badge funcionario-nivel-${func.nivelPermissao?.toLowerCase()}`}
-                      >
-                        {func.nivelPermissao}
-                      </td>
-                      <td style={{ textAlign: 'right' }}>
-                        <button
-                          className="funcionario-btn-danger-soft"
-                          onClick={() => excluirFuncionario(func.id)}
-                        >
-                          <MdDelete size={18} />
-                          <span>Excluir</span>
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
+      <div className="employees-table-container">
+        <table className="employees-table">
+          <thead>
+            <tr>
+              <th>Nome Completo</th>
+              <th>Contato</th>
+              <th>Localização</th>
+              <th>Usuário</th>
+              <th>Tipo de Acesso</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            {funcionariosFiltrados.map((func) => (
+              <tr key={func.id}>
+                <td>
+                  <div className="employee-name">{func.nome}</div>
+                </td>
+                <td>
+                  <div className="employee-info">{func.telefone}</div>
+                </td>
+                <td>
+                  <div className="employee-info">{func.endereco}</div>
+                </td>
+                <td>
+                  <div className="employee-info">{func.usuario}</div>
+                </td>
+                <td>
+                  <span className={`permission-badge ${getPermissaoClass(func.nivelPermissao)}`}>
+                    {getPermissaoText(func.nivelPermissao)}
+                  </span>
+                </td>
+                <td>
+                  <div className="table-actions">
+                    <button
+                      className="icon-btn btn-delete-employee"
+                      onClick={() => handleDelete(func.id)}
+                    >
+                      Excluir
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {showModal && <ModalCadFuncionario onClose={handleModalClose} />}
     </div>
   );
 }
-
-function FuncionarioEngenheiro() {
-  const [funcionarios, setFuncionarios] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    carregarFuncionarios();
-  }, []);
-
-  const carregarFuncionarios = async () => {
-    try {
-      setLoading(true);
-      const response = await funcionarioService.listar();
-      const filtrados = response.data.filter(
-        (f) =>
-          f.nivelPermissao === 'OPERADOR' || f.nivelPermissao === 'ENGENHEIRO'
-      );
-      setFuncionarios(filtrados);
-    } catch (err) {
-      console.error('Erro ao carregar funcionários:', err);
-      setError('Erro ao carregar funcionários');
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (loading) {
-    return (
-      <div className="funcionario-page">
-        <div className="funcionario-loading">Carregando funcionários...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="funcionario-page">
-        <div className="funcionario-error">{error}</div>
-      </div>
-    );
-  }
-
-  return (
-    <div className="funcionario-page">
-      <header className="funcionario-header">
-        <div>
-          <h1>Funcionários</h1>
-          <p className="funcionario-subtitle">
-            Visualize os colaboradores operadores e engenheiros.
-          </p>
-        </div>
-      </header>
-
-      <main className="funcionario-main">
-        <section className="funcionario-table-section">
-          <div className="funcionario-section-header">
-            <h2>Lista de Funcionários</h2>
-            <span className="funcionario-section-badge">
-              Total: {funcionarios.length || 0}
-            </span>
-          </div>
-
-          <div className="funcionario-table-wrapper">
-            <table className="funcionario-table">
-              <thead>
-                <tr>
-                  <th>ID</th>
-                  <th>Nome</th>
-                  <th>Telefone</th>
-                  <th>Nível</th>
-                </tr>
-              </thead>
-              <tbody>
-                {funcionarios.length === 0 ? (
-                  <tr>
-                    <td colSpan="4" className="funcionario-empty-row">
-                      Nenhum funcionário encontrado.
-                    </td>
-                  </tr>
-                ) : (
-                  funcionarios.map((func) => (
-                    <tr key={func.id}>
-                      <td>{func.id}</td>
-                      <td>{func.nome}</td>
-                      <td>{func.telefone}</td>
-                      <td
-                        className={`funcionario-nivel-badge funcionario-nivel-${func.nivelPermissao?.toLowerCase()}`}
-                      >
-                        {func.nivelPermissao}
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
-
-function Funcionario({ user }) {
-  if (user.nivel === 'administrador') return <FuncionarioAdmin />;
-  if (user.nivel === 'engenheiro') return <FuncionarioEngenheiro />;
-  return <div className="funcionario-page">Você não deveria estar aqui.</div>;
-}
-
-export default Funcionario;

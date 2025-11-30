@@ -77,7 +77,7 @@ function App() {
                 </ProtectedRoute>
               }
             />
-            <Route path="detalheAeronave/:codigo" element={<DetalheAeronave user={user} />} />
+            <Route path="aeronaves/:codigo" element={<DetalheAeronave user={user} />} />
             <Route path="*" element={<Navigate to="/dashboard" />} />
           </Route>
         )}
