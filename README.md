@@ -4,7 +4,6 @@ Aplicação web full-stack desenvolvida para gestão completa de aeronaves, com 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Prisma](https://imglds.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
 ## 🚀 Guia Rápido (Quick Start)
 
 ### 1. Clonar o Repositório
