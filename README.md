@@ -1,17 +1,9 @@
-De acordo com o texto fornecido, aqui está o conteúdo completo e formatado para o seu arquivo **README.md**.
-
-Copie e cole o bloco abaixo em seu arquivo `README.md`:
-
-````markdown
 # 🚁 AeroCode - Sistema de Gestão de Aeronaves
 Aplicação web full-stack desenvolvida para gestão completa de aeronaves, com **Dashboard Interativo**, **Geração de Relatórios em PDF** e **Controle de Fases de Produção**.
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Prisma](https://imglds.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-
----
 ## 🚀 Guia Rápido (Quick Start)
 
 ### 1. Clonar o Repositório
@@ -82,36 +74,9 @@ Utilize estes usuários já cadastrados pelo sistema para testar os diferentes n
 
 | Função | Usuário | Senha | Permissões |
 |:-------|:--------|:------|:-----------|
-| **Administrador** | `admin` | `admin123` | Acesso Total (Criar, Editar, Excluir, Finalizar) |
-| **Engenheiro** | `engenheiro` | `eng123` | Gerenciar Aeronaves e Fases (Sem Excluir) |
-| **Operador** | `operador` | `op123` | Visualizar Dados e Executar Tarefas |
-
------
-
-## 📁 Estrutura do Projeto
-
-```
-teste-av/
-├── backend/ # API Node.js + TypeScript + Express
-│ ├── src/
-│ │ ├── controllers/ # Lógica de negócio
-│ │ ├── services/ # Regras de dados (Prisma)
-│ │ ├── middleware/ # Autenticação (JWT)
-│ │ ├── routes/ # Endpoints da API
-│ │ └── config/ # Configuração do banco
-│ ├── prisma/ # Schema do Banco de Dados & Seeds
-│ │ ├── schema.prisma
-│ │ └── seed.ts
-│ └── package.json
-│
-└── frontend/ # Interface React + Vite
-├── src/
-│ ├── components/ # Modais e Componentes Reutilizáveis
-│ ├── pages/ # Dashboard, Login, Detalhes
-│ ├── services/ # Configuração Axios
-│ └── styles/ # CSS Customizado (Dark Theme)
-└── package.json
-```
+| **Administrador** | `adm` | `123456` | Acesso Total (Criar, Editar, Excluir, Finalizar) |
+| **Engenheiro** | `eng` | `123456` | Gerenciar Aeronaves e Fases (Sem Excluir) |
+| **Operador** | `ope` | `123456` | Visualizar Dados e Executar Tarefas |
 
 -----
 
@@ -272,7 +237,7 @@ Este projeto foi desenvolvido para fins educacionais.
 **Enzo Gabriel**
 
   - GitHub: [@EnzoGabrielCode](https://www.google.com/search?q=https://github.com/EnzoGabrielCode)
-  - Repositório: [teste-av](https://www.google.com/search?q=https://github.com/EnzoGabrielCode/teste-av)
+  - Repositório: [teste-av](https://www.google.com/search?q=https://github.com/EnzoGabrielCode/AV3)
 
 -----
 
@@ -287,14 +252,3 @@ Contribuições são bem-vindas\! Para contribuir:
 5.  Abra um Pull Request
 
 -----
-
-## 📞 Suporte
-
-Se encontrar algum problema ou tiver dúvidas, abra uma [Issue](https://github.com/EnzoGabrielCode/teste-av/issues) no repositório.
-
------
-
-⭐ **Se este projeto te ajudou, considere dar uma estrela no repositório\!**
-
-```
-```
