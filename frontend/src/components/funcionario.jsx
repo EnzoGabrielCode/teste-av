@@ -10,8 +10,18 @@ export default function Funcionarios() {
   const [busca, setBusca] = useState('');
   const [filtroPermissao, setFiltroPermissao] = useState('');
   const [showModal, setShowModal] = useState(false);
+  const [usuarioLogado, setUsuarioLogado] = useState(null);
 
   useEffect(() => {
+    const storedUser = localStorage.getItem('aerocodeUser');
+    if (storedUser) {
+      try {
+        const parsedUser = JSON.parse(storedUser);
+        setUsuarioLogado(parsedUser);
+      } catch (error) {
+        console.error('Erro ao ler dados do usuário:', error);
+      }
+    }
     carregarFuncionarios();
   }, []);
 
@@ -30,6 +40,11 @@ export default function Funcionarios() {
   };
 
   const handleDelete = async (id) => {
+    if (!isAdmin) {
+      alert('Apenas administradores podem excluir colaboradores');
+      return;
+    }
+
     if (window.confirm('Tem certeza que deseja excluir este colaborador?')) {
       try {
         await funcionarioService.deletar(id);
@@ -45,6 +60,14 @@ export default function Funcionarios() {
     if (refresh) {
       carregarFuncionarios();
     }
+  };
+
+  const handleAddClick = () => {
+    if (!isAdmin) {
+      alert('Apenas administradores podem cadastrar novos colaboradores');
+      return;
+    }
+    setShowModal(true);
   };
 
   const funcionariosFiltrados = funcionarios.filter((f) => {
@@ -72,6 +95,8 @@ export default function Funcionarios() {
     return map[permissao] || permissao;
   };
 
+  const isAdmin = usuarioLogado?.nivelPermissao === 'ADMINISTRADOR';
+
   if (loading) {
     return (
       <div className="employees-page">
@@ -87,9 +112,11 @@ export default function Funcionarios() {
           <div className="employees-icon">👥</div>
           Gestão de Colaboradores
         </h1>
-        <button className="add-employee-btn" onClick={() => setShowModal(true)}>
-          + Adicionar Colaborador
-        </button>
+        {isAdmin && (
+          <button className="add-employee-btn" onClick={handleAddClick}>
+            + Adicionar Colaborador
+          </button>
+        )}
       </div>
 
       <div className="search-section">
@@ -123,7 +150,7 @@ export default function Funcionarios() {
               <th>Localização</th>
               <th>Usuário</th>
               <th>Tipo de Acesso</th>
-              <th>Ações</th>
+              {isAdmin && <th>Ações</th>}
             </tr>
           </thead>
           <tbody>
@@ -146,16 +173,18 @@ export default function Funcionarios() {
                     {getPermissaoText(func.nivelPermissao)}
                   </span>
                 </td>
-                <td>
-                  <div className="table-actions">
-                    <button
-                      className="icon-btn btn-delete-employee"
-                      onClick={() => handleDelete(func.id)}
-                    >
-                      Excluir
-                    </button>
-                  </div>
-                </td>
+                {isAdmin && (
+                  <td>
+                    <div className="table-actions">
+                      <button
+                        className="icon-btn btn-delete-employee"
+                        onClick={() => handleDelete(func.id)}
+                      >
+                        Excluir
+                      </button>
+                    </div>
+                  </td>
+                )}
               </tr>
             ))}
           </tbody>

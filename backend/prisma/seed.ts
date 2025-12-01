@@ -7,7 +7,7 @@ async function main() {
   console.log('🌱 Iniciando seed do banco de dados...');
 
   const adminExiste = await prisma.funcionario.findUnique({
-    where: { usuario: 'admin' },
+    where: { usuario: 'adm' },
   });
 
   if (adminExiste) {
@@ -15,16 +15,16 @@ async function main() {
     return;
   }
 
-  const senhaHashAdmin = await bcrypt.hash('admin123', 10);
-  const senhaHashEng = await bcrypt.hash('eng123', 10);
-  const senhaHashOp = await bcrypt.hash('op123', 10);
+  const senhaHashAdmin = await bcrypt.hash('123456', 10);
+  const senhaHashEng = await bcrypt.hash('123456', 10);
+  const senhaHashOp = await bcrypt.hash('123456', 10);
 
   await prisma.funcionario.create({
     data: {
       nome: 'Administrador',
       telefone: '11999999999',
-      endereco: 'Rua Admin, 123',
-      usuario: 'admin',
+      endereco: 'Rua eugenio, 123',
+      usuario: 'adm',
       senha: senhaHashAdmin,
       nivelPermissao: 'ADMINISTRADOR',
     },
@@ -32,10 +32,10 @@ async function main() {
 
   await prisma.funcionario.create({
     data: {
-      nome: 'João Engenheiro',
-      telefone: '11988888888',
-      endereco: 'Rua Eng, 456',
-      usuario: 'engenheiro',
+      nome: 'Ronaldo',
+      telefone: '12999999999',
+      endereco: 'Rua flor, 456',
+      usuario: 'eng',
       senha: senhaHashEng,
       nivelPermissao: 'ENGENHEIRO',
     },
@@ -43,10 +43,10 @@ async function main() {
 
   await prisma.funcionario.create({
     data: {
-      nome: 'Maria Operadora',
+      nome: 'José',
       telefone: '11977777777',
-      endereco: 'Rua Op, 789',
-      usuario: 'operador',
+      endereco: 'Rua marcelo, 789',
+      usuario: 'ope',
       senha: senhaHashOp,
       nivelPermissao: 'OPERADOR',
     },
@@ -55,9 +55,9 @@ async function main() {
   console.log('✅ Dados iniciais criados com sucesso!');
   console.log('');
   console.log('📝 Usuários criados:');
-  console.log('  1. admin / admin123 (ADMINISTRADOR)');
-  console.log('  2. engenheiro / eng123 (ENGENHEIRO)');
-  console.log('  3. operador / op123 (OPERADOR)');
+  console.log('  1. adm / 123456 (ADMINISTRADOR)');
+  console.log('  2. eng / 123456 (ENGENHEIRO)');
+  console.log('  3. ope / 123456 (OPERADOR)');
 }
 
 main()
