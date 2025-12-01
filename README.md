@@ -75,36 +75,9 @@ Utilize estes usuários já cadastrados pelo sistema para testar os diferentes n
 
 | Função | Usuário | Senha | Permissões |
 |:-------|:--------|:------|:-----------|
-| **Administrador** | `admin` | `admin123` | Acesso Total (Criar, Editar, Excluir, Finalizar) |
-| **Engenheiro** | `engenheiro` | `eng123` | Gerenciar Aeronaves e Fases (Sem Excluir) |
-| **Operador** | `operador` | `op123` | Visualizar Dados e Executar Tarefas |
-
------
-
-## 📁 Estrutura do Projeto
-
-```
-teste-av/
-├── backend/ # API Node.js + TypeScript + Express
-│ ├── src/
-│ │ ├── controllers/ # Lógica de negócio
-│ │ ├── services/ # Regras de dados (Prisma)
-│ │ ├── middleware/ # Autenticação (JWT)
-│ │ ├── routes/ # Endpoints da API
-│ │ └── config/ # Configuração do banco
-│ ├── prisma/ # Schema do Banco de Dados & Seeds
-│ │ ├── schema.prisma
-│ │ └── seed.ts
-│ └── package.json
-│
-└── frontend/ # Interface React + Vite
-├── src/
-│ ├── components/ # Modais e Componentes Reutilizáveis
-│ ├── pages/ # Dashboard, Login, Detalhes
-│ ├── services/ # Configuração Axios
-│ └── styles/ # CSS Customizado (Dark Theme)
-└── package.json
-```
+| **Administrador** | `adm` | `123456` | Acesso Total (Criar, Editar, Excluir, Finalizar) |
+| **Engenheiro** | `eng` | `123456` | Gerenciar Aeronaves e Fases (Sem Excluir) |
+| **Operador** | `ope` | `123456` | Visualizar Dados e Executar Tarefas |
 
 -----
 
