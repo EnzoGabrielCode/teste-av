@@ -1,8 +1,3 @@
-De acordo com o texto fornecido, aqui está o conteúdo completo e formatado para o seu arquivo **README.md**.
-
-Copie e cole o bloco abaixo em seu arquivo `README.md`:
-
-````markdown
 # 🚁 AeroCode - Sistema de Gestão de Aeronaves
 Aplicação web full-stack desenvolvida para gestão completa de aeronaves, com **Dashboard Interativo**, **Geração de Relatórios em PDF** e **Controle de Fases de Produção**.
 ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
@@ -10,8 +5,6 @@ Aplicação web full-stack desenvolvida para gestão completa de aeronaves, com 
 ![Node.js](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 ![Prisma](https://imglds.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white)
-
----
 ## 🚀 Guia Rápido (Quick Start)
 
 ### 1. Clonar o Repositório
@@ -272,7 +265,7 @@ Este projeto foi desenvolvido para fins educacionais.
 **Enzo Gabriel**
 
   - GitHub: [@EnzoGabrielCode](https://www.google.com/search?q=https://github.com/EnzoGabrielCode)
-  - Repositório: [teste-av](https://www.google.com/search?q=https://github.com/EnzoGabrielCode/teste-av)
+  - Repositório: [teste-av](https://www.google.com/search?q=https://github.com/EnzoGabrielCode/AV3)
 
 -----
 
@@ -287,14 +280,3 @@ Contribuições são bem-vindas\! Para contribuir:
 5.  Abra um Pull Request
 
 -----
-
-## 📞 Suporte
-
-Se encontrar algum problema ou tiver dúvidas, abra uma [Issue](https://github.com/EnzoGabrielCode/teste-av/issues) no repositório.
-
------
-
-⭐ **Se este projeto te ajudou, considere dar uma estrela no repositório\!**
-
-```
-```
